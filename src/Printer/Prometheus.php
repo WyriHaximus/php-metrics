@@ -15,11 +15,10 @@ use function count;
 use function implode;
 use function strlen;
 
-use const WyriHaximus\Constants\Numeric\ZERO;
-
 final class Prometheus implements Printer
 {
-    private const NL = "\n";
+    private const NL              = "\n";
+    private const NO_LABELS_COUNT = 0;
 
     public function counter(Counters $counters): string
     {
@@ -28,7 +27,7 @@ final class Prometheus implements Printer
             $string    .= $counters->name() . '_total';
             $labels     = $counter->labels();
             $labelCount = count($labels);
-            if ($labelCount !== ZERO) {
+            if ($labelCount !== self::NO_LABELS_COUNT) {
                 $string .= '{';
                 $string .= implode(',', array_map(static fn (Label $label) => $label->name() . '="' . $label->value() . '"', $labels));
                 $string .= '}';
@@ -59,7 +58,7 @@ final class Prometheus implements Printer
             $string    .= $gauge->name();
             $labels     = $gauge->labels();
             $labelCount = count($labels);
-            if ($labelCount !== ZERO) {
+            if ($labelCount !== self::NO_LABELS_COUNT) {
                 $string .= '{';
                 $string .= implode(',', array_map(static fn (Label $label) => $label->name() . '="' . $label->value() . '"', $labels));
                 $string .= '}';
@@ -91,13 +90,13 @@ final class Prometheus implements Printer
             $labels       = $histogram->labels();
             $labelCount   = count($labels);
             $labelsString = '';
-            if ($labelCount !== ZERO) {
+            if ($labelCount !== self::NO_LABELS_COUNT) {
                 $labelsString = implode(',', array_map(static fn (Label $label) => $label->name() . '="' . $label->value() . '"', $labels));
             }
 
             foreach ($histogram->buckets() as $bucket) {
                 $string .= $histogram->name() . '_bucket{le="' . $bucket->le() . '"';
-                if ($labelCount !== ZERO) {
+                if ($labelCount !== self::NO_LABELS_COUNT) {
                     $string .= ',' . $labelsString;
                 }
 
@@ -105,14 +104,14 @@ final class Prometheus implements Printer
             }
 
             $string .= $histogram->name() . '_sum';
-            if ($labelCount !== ZERO) {
+            if ($labelCount !== self::NO_LABELS_COUNT) {
                 $string .= '{' . $labelsString . '}';
             }
 
             $string .= ' ' . $histogram->summary() . self::NL;
 
             $string .= $histogram->name() . '_count';
-            if ($labelCount !== ZERO) {
+            if ($labelCount !== self::NO_LABELS_COUNT) {
                 $string .= '{' . $labelsString . '}';
             }
 
