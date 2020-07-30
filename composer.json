@@ -1,0 +1,44 @@
+{
+    "name": "wyrihaximus/metrics",
+    "description": "Pure metric VO's",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Cees-Jan Kiewiet",
+            "email": "ceesjank@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "thecodingmachine/safe": "^1.1",
+        "wyrihaximus/constants": "^1.5"
+    },
+    "require-dev": {
+        "phpbench/phpbench": "^0.17.1",
+        "wyrihaximus/test-utilities": "^2.5"
+    },
+    "config": {
+        "platform": {
+            "php": "7.4.7"
+        },
+        "sort-packages": true
+    },
+    "autoload": {
+        "psr-4": {
+            "WyriHaximus\\Metrics\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "WyriHaximus\\Tests\\Metrics\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "composer normalize"
+        ],
+        "post-update-cmd": [
+            "composer normalize"
+        ]
+    }
+}
