@@ -1,0 +1,10 @@
+parameters:
+	ignoreErrors:
+		- '#Parameter \#1 \$it of function iterator_to_array expects Traversable, iterable<WyriHaximus\\Metrics\\Counter|Histogram|Histogram\\Bucket|Label|Gauge|Summary> given.#'
+	ergebnis:
+		classesAllowedToBeExtended:
+			- Exception
+			- InvalidArgumentException
+
+includes:
+	- vendor/wyrihaximus/test-utilities/rules.neon

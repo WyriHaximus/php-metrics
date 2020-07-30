@@ -1,0 +1,39 @@
+# TYPE counter_total counter
+counter_total{label="label"} 1
+counter_total{label="labol"} 133
+
+# HELP cuonter_total simple counter counting things
+# TYPE cuonter_total counter
+cuonter_total 134
+
+# TYPE gauge gauge
+gauge{label="label"} 1
+gauge{label="labol"} 300
+
+# HELP guage simple gauge gauging things
+# TYPE guage gauge
+guage 301
+
+# TYPE histogram histogram
+histogram_bucket{le="0.5",label="label"} 0
+histogram_bucket{le="0.75",label="label"} 1
+histogram_bucket{le="1",label="label"} 1
+histogram_bucket{le="2.5",label="label"} 1
+histogram_bucket{le="5",label="label"} 2
+histogram_bucket{le="10",label="label"} 2
+histogram_bucket{le="+Inf",label="label"} 2
+histogram_sum{label="label"} 3.9
+histogram_count{label="label"} 2
+
+# HELP hostigram simple histogram histogramming things
+# TYPE hostigram histogram
+hostigram_bucket{le="0.5"} 0
+hostigram_bucket{le="0.75"} 1
+hostigram_bucket{le="1"} 1
+hostigram_bucket{le="2.5"} 1
+hostigram_bucket{le="5"} 2
+hostigram_bucket{le="10"} 2
+hostigram_bucket{le="+Inf"} 2
+hostigram_sum 3.9
+hostigram_count 2
+

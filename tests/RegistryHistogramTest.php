@@ -1,0 +1,75 @@
+<?php
+
+declare(strict_types=1);
+
+namespace WyriHaximus\Tests\Metrics;
+
+use PHPUnit\Framework\TestCase;
+use WyriHaximus\Metrics\Factory;
+use WyriHaximus\Metrics\Histogram;
+use WyriHaximus\Metrics\Label;
+use WyriHaximus\Metrics\Label\Name;
+
+use function array_map;
+use function array_merge;
+use function array_values;
+use function iterator_to_array;
+
+final class RegistryHistogramTest extends TestCase
+{
+    /**
+     * @test
+     */
+    public function histogram(): void
+    {
+        $metricName        = 'name';
+        $metricDescription = 'Description';
+
+        $registry  = Factory::create();
+        $histogram = $registry->histogram($metricName, $metricDescription, new Histogram\Buckets(0.1, 1, 2, 3), new Name('label'), new Name('node'));
+        $histogram->histogram(new Label('node', 'reuzenzwam'), new Label('label', 'label'))->observe(1);
+        $histograms = iterator_to_array($histogram->histograms());
+        self::assertCount(1, $histograms);
+        self::assertSame([0, 0, 1, 1, 1], array_values(array_map(static fn (Histogram\Bucket $bucket) => $bucket->count(), array_merge(...array_map(static fn (Histogram $histogram) => iterator_to_array($histogram->buckets()), $histograms)))));
+        self::assertSame([1], array_map(static fn (Histogram $histogram) => $histogram->count(), $histograms));
+        self::assertSame([1.0], array_map(static fn (Histogram $histogram) => $histogram->summary(), $histograms));
+        self::assertSame([['label', 'reuzenzwam']], array_map(static fn (Histogram $histogram) => array_map(static fn (Label $label) => $label->value(), $histogram->labels()), $histograms));
+
+        $histogram->histogram(new Label('node', 'reuzenzwam'), new Label('label', 'label'))->observe(5);
+        $histograms = iterator_to_array($histogram->histograms());
+        self::assertCount(1, $histograms);
+        self::assertSame([0, 0, 1, 1, 2], array_values(array_map(static fn (Histogram\Bucket $bucket) => $bucket->count(), array_merge(...array_map(static fn (Histogram $histogram) => iterator_to_array($histogram->buckets()), $histograms)))));
+        self::assertSame([2], array_map(static fn (Histogram $histogram) => $histogram->count(), $histograms));
+        self::assertSame([6.0], array_map(static fn (Histogram $histogram) => $histogram->summary(), $histograms));
+        self::assertSame([['label', 'reuzenzwam']], array_map(static fn (Histogram $histogram) => array_map(static fn (Label $label) => $label->value(), $histogram->labels()), $histograms));
+
+        $histogram->histogram(new Label('node', 'reuzenzwam'), new Label('label', 'labol'))->observe(0.2);
+        $histograms = iterator_to_array($histogram->histograms());
+        self::assertCount(2, $histograms);
+        self::assertSame([0, 0, 1, 1, 1, 0, 1, 1, 1], array_values(array_map(static fn (Histogram\Bucket $bucket) => $bucket->count(), array_merge(...array_map(static fn (Histogram $histogram) => iterator_to_array($histogram->buckets()), $histograms)))));
+        self::assertSame([2, 1], array_map(static fn (Histogram $histogram) => $histogram->count(), $histograms));
+        self::assertSame([6.0, 0.2], array_map(static fn (Histogram $histogram) => $histogram->summary(), $histograms));
+        self::assertSame([['label', 'reuzenzwam'], ['labol', 'reuzenzwam']], array_map(static fn (Histogram $histogram) => array_map(static fn (Label $label) => $label->value(), $histogram->labels()), $histograms));
+
+        self::assertSame($metricName, $histogram->name());
+        self::assertSame($metricDescription, $histogram->description());
+        foreach ($histograms as $uniqueHistogram) {
+            self::assertSame($metricName, $uniqueHistogram->name());
+            self::assertSame($metricDescription, $uniqueHistogram->description());
+        }
+    }
+
+    /**
+     * @test
+     */
+    public function faultyLabels(): void
+    {
+        self::expectException(Label\GivenLabelsDontMatchExpectedLabels::class);
+
+        $metricName        = 'name';
+        $metricDescription = 'Description';
+
+        $registry = Factory::create();
+        $registry->histogram($metricName, $metricDescription, new Histogram\Buckets(0.1), new Name('label'))->histogram(new Label('labiel', 'boem'));
+    }
+}
