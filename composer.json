@@ -10,8 +10,7 @@
     ],
     "require": {
         "php": "^7.4",
-        "thecodingmachine/safe": "^1.1",
-        "wyrihaximus/constants": "^1.5"
+        "thecodingmachine/safe": "^1.1"
     },
     "require-dev": {
         "phpbench/phpbench": "^0.17.1",
