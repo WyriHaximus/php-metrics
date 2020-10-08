@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 use WyriHaximus\Metrics\Factory;
 use WyriHaximus\Metrics\Histogram\Buckets;
 use WyriHaximus\Metrics\Label;
