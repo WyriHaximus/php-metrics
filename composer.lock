@@ -8,7 +8,7 @@
     "packages": [
         {
             "name": "thecodingmachine/safe",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thecodingmachine/safe.git",
