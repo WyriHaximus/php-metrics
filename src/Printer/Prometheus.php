@@ -9,6 +9,7 @@ use WyriHaximus\Metrics\Printer;
 use WyriHaximus\Metrics\Registry\Counters;
 use WyriHaximus\Metrics\Registry\Gauges;
 use WyriHaximus\Metrics\Registry\Histograms;
+use WyriHaximus\Metrics\Registry\Summaries;
 
 use function array_map;
 use function count;
@@ -126,6 +127,43 @@ final class Prometheus implements Printer
             }
 
             $head .= '# TYPE ' . $histograms->name() . ' histogram' . self::NL;
+
+            $string = $head . $string;
+        }
+
+        return $string . self::NL;
+    }
+
+    public function summary(Summaries $summaries): string
+    {
+        $string = '';
+
+        foreach ($summaries->summaries() as $summary) {
+            $labels       = $summary->labels();
+            $labelCount   = count($labels);
+            $labelsString = '';
+            if ($labelCount !== self::NO_LABELS_COUNT) {
+                $labelsString = implode(',', array_map(static fn (Label $label) => $label->name() . '="' . $label->value() . '"', $labels));
+            }
+
+            foreach ($summary->quantiles() as $quantile) {
+                $string .= $summary->name() . '{quantile="' . $quantile->quantile() . '"';
+                if ($labelCount !== self::NO_LABELS_COUNT) {
+                    $string .= ',' . $labelsString;
+                }
+
+                $string .= '} ' . $quantile->value() . self::NL;
+            }
+        }
+
+        if ($string !== '') {
+            $head = '';
+
+            if (strlen($summaries->description()) > 0) {
+                $head = '# HELP ' . $summaries->name() . ' ' . $summaries->description() . self::NL;
+            }
+
+            $head .= '# TYPE ' . $summaries->name() . ' summary' . self::NL;
 
             $string = $head . $string;
         }
