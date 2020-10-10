@@ -6,7 +6,6 @@ namespace WyriHaximus\Tests\Metrics\Printer;
 
 use PHPUnit\Framework\TestCase;
 use WyriHaximus\Metrics\Factory;
-use WyriHaximus\Metrics\Histogram\Buckets;
 use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Label\Name;
 use WyriHaximus\Metrics\Printer\Prometheus;
@@ -31,10 +30,10 @@ final class PrometheusTest extends TestCase
         $registry->gauge('gauge', '', new Name('label'))->gauge(new Label('label', 'labol'))->incrBy(300);
         $registry->gauge('guage', 'simple gauge gauging things')->gauge()->incr();
         $registry->gauge('guage', 'simple gauge gauging things')->gauge()->incrBy(300);
-        $registry->histogram('histogram', '', new Buckets(0.5, 0.75, 1, 2.5, 5, 10), new Name('label'))->histogram(new Label('label', 'label'))->observe(0.6);
-        $registry->histogram('histogram', '', new Buckets(0.5, 0.75, 1, 2.5, 5, 10), new Name('label'))->histogram(new Label('label', 'label'))->observe(3.3);
-        $registry->histogram('hostigram', 'simple histogram histogramming things', new Buckets(0.5, 0.75, 1, 2.5, 5, 10))->histogram()->observe(0.6);
-        $registry->histogram('hostigram', 'simple histogram histogramming things', new Buckets(0.5, 0.75, 1, 2.5, 5, 10))->histogram()->observe(3.3);
+        $registry->histogram('histogram', '', Factory::defaultBuckets(), new Name('label'))->histogram(new Label('label', 'label'))->observe(0.6);
+        $registry->histogram('histogram', '', Factory::defaultBuckets(), new Name('label'))->histogram(new Label('label', 'label'))->observe(3.3);
+        $registry->histogram('hostigram', 'simple histogram histogramming things', Factory::defaultBuckets())->histogram()->observe(0.6);
+        $registry->histogram('hostigram', 'simple histogram histogramming things', Factory::defaultBuckets())->histogram()->observe(3.3);
 
         self::assertSame(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'prometheus.txt'), $registry->print(new Prometheus()));
     }

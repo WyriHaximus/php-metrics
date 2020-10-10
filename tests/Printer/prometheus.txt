@@ -15,11 +15,22 @@ gauge{label="labol"} 300
 guage 301
 
 # TYPE histogram histogram
+histogram_bucket{le="0.001",label="label"} 0
+histogram_bucket{le="0.0025",label="label"} 0
+histogram_bucket{le="0.005",label="label"} 0
+histogram_bucket{le="0.0075",label="label"} 0
+histogram_bucket{le="0.01",label="label"} 0
+histogram_bucket{le="0.025",label="label"} 0
+histogram_bucket{le="0.05",label="label"} 0
+histogram_bucket{le="0.075",label="label"} 0
+histogram_bucket{le="0.1",label="label"} 0
+histogram_bucket{le="0.25",label="label"} 0
 histogram_bucket{le="0.5",label="label"} 0
 histogram_bucket{le="0.75",label="label"} 1
 histogram_bucket{le="1",label="label"} 1
 histogram_bucket{le="2.5",label="label"} 1
 histogram_bucket{le="5",label="label"} 2
+histogram_bucket{le="7.5",label="label"} 2
 histogram_bucket{le="10",label="label"} 2
 histogram_bucket{le="+Inf",label="label"} 2
 histogram_sum{label="label"} 3.9
@@ -27,11 +38,22 @@ histogram_count{label="label"} 2
 
 # HELP hostigram simple histogram histogramming things
 # TYPE hostigram histogram
+hostigram_bucket{le="0.001"} 0
+hostigram_bucket{le="0.0025"} 0
+hostigram_bucket{le="0.005"} 0
+hostigram_bucket{le="0.0075"} 0
+hostigram_bucket{le="0.01"} 0
+hostigram_bucket{le="0.025"} 0
+hostigram_bucket{le="0.05"} 0
+hostigram_bucket{le="0.075"} 0
+hostigram_bucket{le="0.1"} 0
+hostigram_bucket{le="0.25"} 0
 hostigram_bucket{le="0.5"} 0
 hostigram_bucket{le="0.75"} 1
 hostigram_bucket{le="1"} 1
 hostigram_bucket{le="2.5"} 1
 hostigram_bucket{le="5"} 2
+hostigram_bucket{le="7.5"} 2
 hostigram_bucket{le="10"} 2
 hostigram_bucket{le="+Inf"} 2
 hostigram_sum 3.9
