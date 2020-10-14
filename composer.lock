@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "d0532579367409d261552884719abbbb",
+    "content-hash": "4960e940e4bc476b2de1e1f17850fe28",
     "packages": [
+        {
+            "name": "react-parallel/object-proxy-attributes",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/reactphp-parallel/object-proxy-attributes.git",
+                "reference": "f8844d096ea611817f29c306096eebfd2680478a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy-attributes/zipball/f8844d096ea611817f29c306096eebfd2680478a",
+                "reference": "f8844d096ea611817f29c306096eebfd2680478a",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4"
+            },
+            "require-dev": {
+                "wyrihaximus/test-utilities": "^2.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ReactParallel\\ObjectProxy\\Attribute\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com",
+                    "homepage": "http://wyrihaximus.net/"
+                }
+            ],
+            "description": "👨‍🚀🛰👩‍🚀 Attributes for react-parallel/object-proxy",
+            "time": "2020-10-13T18:55:00+00:00"
+        },
         {
             "name": "thecodingmachine/safe",
             "version": "v1.3.1",
@@ -7854,7 +7894,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "react-parallel/object-proxy-attributes": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Metrics;
 
+use ReactParallel\ObjectProxy\Attribute\Defer;
 use WyriHaximus\Metrics\Histogram\Bucket;
 
 interface Histogram
@@ -26,5 +27,8 @@ interface Histogram
      */
     public function labels(): array;
 
+    /**
+     * @Defer()
+     */
     public function observe(float $value): void;
 }
