@@ -7489,16 +7489,16 @@
         },
         {
             "name": "vimeo/psalm",
-            "version": "3.17.1",
+            "version": "3.17.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vimeo/psalm.git",
-                "reference": "8f211792d813e4dc89f04ed372785ce93b902fd1"
+                "reference": "9e526d9cb569fe4631e6a737bbb7948d05596e3f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vimeo/psalm/zipball/8f211792d813e4dc89f04ed372785ce93b902fd1",
-                "reference": "8f211792d813e4dc89f04ed372785ce93b902fd1",
+                "url": "https://api.github.com/repos/vimeo/psalm/zipball/9e526d9cb569fe4631e6a737bbb7948d05596e3f",
+                "reference": "9e526d9cb569fe4631e6a737bbb7948d05596e3f",
                 "shasum": ""
             },
             "require": {
@@ -7585,7 +7585,7 @@
                 "inspection",
                 "php"
             ],
-            "time": "2020-10-13T00:25:46+00:00"
+            "time": "2020-10-15T00:23:17+00:00"
         },
         {
             "name": "webmozart/assert",
@@ -7805,16 +7805,16 @@
         },
         {
             "name": "wyrihaximus/test-utilities",
-            "version": "2.8.1",
+            "version": "2.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-test-utilities.git",
-                "reference": "34ca0e4f7e982544553116359d5864d7586ebb53"
+                "reference": "9e95d9eeff346535c027d46c066ba94bfbcd691d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/34ca0e4f7e982544553116359d5864d7586ebb53",
-                "reference": "34ca0e4f7e982544553116359d5864d7586ebb53",
+                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/9e95d9eeff346535c027d46c066ba94bfbcd691d",
+                "reference": "9e95d9eeff346535c027d46c066ba94bfbcd691d",
                 "shasum": ""
             },
             "require": {
@@ -7889,7 +7889,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-14T16:01:16+00:00"
+            "time": "2020-10-14T16:44:26+00:00"
         }
     ],
     "aliases": [],
