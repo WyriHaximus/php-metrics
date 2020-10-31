@@ -10,7 +10,7 @@
     ],
     "require": {
         "php": "^7.4",
-        "react-parallel/object-proxy-attributes": "dev-main",
+        "react-parallel/object-proxy-attributes": "^1",
         "thecodingmachine/safe": "^1.1"
     },
     "require-dev": {
