@@ -22,4 +22,29 @@ final class ConfigurationTest extends TestCase
         self::assertNotSame($configuration, $configurationWithClock);
         self::assertSame($clock, $configurationWithClock->clock());
     }
+
+    /**
+     * @test
+     */
+    public function clockSummary(): void
+    {
+        $summary                = new Configuration\Summary();
+        $configuration          = Configuration::create();
+        $configurationWithClock = $configuration->withSummary($summary);
+
+        self::assertNotSame($configuration, $configurationWithClock);
+        self::assertSame($summary, $configurationWithClock->summary());
+    }
+
+    /**
+     * @test
+     */
+    public function clockSummaryBucketCount(): void
+    {
+        $summary                = new Configuration\Summary();
+        $summaryWithBucketCount = $summary->withBucketCount(13);
+
+        self::assertNotSame($summary, $summaryWithBucketCount);
+        self::assertSame(13, $summaryWithBucketCount->bucketCount());
+    }
 }

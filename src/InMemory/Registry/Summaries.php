@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Metrics\InMemory\Registry;
 
-use Lcobucci\Clock\Clock;
+use WyriHaximus\Metrics\Configuration;
 use WyriHaximus\Metrics\InMemory\Summary;
 use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Label\Name;
@@ -22,7 +22,7 @@ final class Summaries implements SummariesInterface
 {
     private const SEPARATOR = 'aefnpawpijo%*&^)(3w4q1japwe';
 
-    private Clock $clock;
+    private Configuration $configuration;
     private string $name;
     private string $description;
     private Quantiles $quantiles;
@@ -31,9 +31,9 @@ final class Summaries implements SummariesInterface
     /** @var array<Summary> */
     private array $summaries = [];
 
-    public function __construct(Clock $clock, string $name, string $description, Quantiles $quantiles, Name ...$requiredLabelNames)
+    public function __construct(Configuration $configuration, string $name, string $description, Quantiles $quantiles, Name ...$requiredLabelNames)
     {
-        $this->clock              = $clock;
+        $this->configuration      = $configuration;
         $this->name               = $name;
         $this->description        = $description;
         $this->quantiles          = $quantiles;
@@ -64,7 +64,7 @@ final class Summaries implements SummariesInterface
         );
 
         if (! array_key_exists($key, $this->summaries)) {
-            $this->summaries[$key] = new Summary($this->clock, $this->name, $this->description, $this->quantiles, ...$labels);
+            $this->summaries[$key] = new Summary($this->configuration, $this->name, $this->description, $this->quantiles, ...$labels);
         }
 
         return $this->summaries[$key];
