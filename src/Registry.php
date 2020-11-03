@@ -10,6 +10,8 @@ use WyriHaximus\Metrics\Label\Name;
 use WyriHaximus\Metrics\Registry\Counters;
 use WyriHaximus\Metrics\Registry\Gauges;
 use WyriHaximus\Metrics\Registry\Histograms;
+use WyriHaximus\Metrics\Registry\Summaries;
+use WyriHaximus\Metrics\Summary\Quantiles;
 
 interface Registry
 {
@@ -27,6 +29,11 @@ interface Registry
      * @Defer()
      */
     public function histogram(string $name, string $description, Buckets $buckets, Name ...$requiredLabelNames): Histograms;
+
+    /**
+     * @Defer()
+     */
+    public function summary(string $name, string $description, Quantiles $quantiles, Name ...$requiredLabelNames): Summaries;
 
     public function print(Printer $printer): string;
 }

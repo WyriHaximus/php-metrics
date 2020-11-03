@@ -15,7 +15,7 @@
     "psr7_response_decode", "psr7_response_json_decode",
     "psr7_response_encode", "psr7_response_json_encode",
     "psr7_uploaded_file_decode", "psr7_uploaded_file_encode",
-    "sort_headers", "validate_array"
+    "sort_headers", "validate_array", "WyriHaximus\\Constants\\Numeric\\TWO"
   ],
   "php-core-extensions" : [
     "Core",

@@ -1,0 +1,80 @@
+<?php
+
+declare(strict_types=1);
+
+namespace WyriHaximus\Metrics\InMemory\Registry;
+
+use Lcobucci\Clock\Clock;
+use WyriHaximus\Metrics\InMemory\Summary;
+use WyriHaximus\Metrics\Label;
+use WyriHaximus\Metrics\Label\Name;
+use WyriHaximus\Metrics\Registry\Summaries as SummariesInterface;
+use WyriHaximus\Metrics\Summary\Quantiles;
+
+use function array_key_exists;
+use function array_map;
+use function array_values;
+use function implode;
+use function Safe\usort;
+use function strcmp;
+
+final class Summaries implements SummariesInterface
+{
+    private const SEPARATOR = 'aefnpawpijo%*&^)(3w4q1japwe';
+
+    private Clock $clock;
+    private string $name;
+    private string $description;
+    private Quantiles $quantiles;
+    /** @var array<string> */
+    private array $requiredLabelNames;
+    /** @var array<Summary> */
+    private array $summaries = [];
+
+    public function __construct(Clock $clock, string $name, string $description, Quantiles $quantiles, Name ...$requiredLabelNames)
+    {
+        $this->clock              = $clock;
+        $this->name               = $name;
+        $this->description        = $description;
+        $this->quantiles          = $quantiles;
+        $this->requiredLabelNames = array_map(static fn (Name $name) => $name->name(), $requiredLabelNames);
+    }
+
+    public function name(): string
+    {
+        return $this->name;
+    }
+
+    public function description(): string
+    {
+        return $this->description;
+    }
+
+    public function summary(Label ...$labels): Summary
+    {
+        Label\Utils::validate($this->requiredLabelNames, ...$labels);
+
+        usort($labels, static fn (Label $a, Label $b) => strcmp($a->name(), $b->name()));
+        $key = implode(
+            self::SEPARATOR,
+            array_map(
+                static fn (Label $label) => $label->value(),
+                $labels
+            ),
+        );
+
+        if (! array_key_exists($key, $this->summaries)) {
+            $this->summaries[$key] = new Summary($this->clock, $this->name, $this->description, $this->quantiles, ...$labels);
+        }
+
+        return $this->summaries[$key];
+    }
+
+    /**
+     * @return iterable<Summary>
+     */
+    public function summaries(): iterable
+    {
+        yield from array_values($this->summaries);
+    }
+}

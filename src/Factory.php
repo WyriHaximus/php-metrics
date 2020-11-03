@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Metrics;
 
+use Lcobucci\Clock\Clock;
+use Lcobucci\Clock\SystemClock;
 use WyriHaximus\Metrics\Histogram\Buckets;
+use WyriHaximus\Metrics\Summary\Quantiles;
 
 final class Factory
 {
@@ -28,13 +31,30 @@ final class Factory
         10,
     ];
 
+    private const DEFAULT_QUANTILES = [
+        0.1,
+        0.5,
+        0.9,
+        0.99,
+    ];
+
     public static function create(): Registry
     {
-        return new InMemory\Registry();
+        return self::createWithClock(SystemClock::fromUTC());
+    }
+
+    public static function createWithClock(Clock $clock): Registry
+    {
+        return new InMemory\Registry($clock);
     }
 
     public static function defaultBuckets(): Buckets
     {
         return new Buckets(...self::DEFAULT_BUCKETS);
+    }
+
+    public static function defaultQuantiles(): Quantiles
+    {
+        return new Quantiles(...self::DEFAULT_QUANTILES);
     }
 }

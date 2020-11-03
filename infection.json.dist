@@ -9,6 +9,58 @@
         "text": "infection-log.txt"
     },
     "mutators": {
-        "@default": true
+        "@default": true,
+        "Increment": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
+            ]
+        },
+        "For_": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
+            ]
+        },
+        "FunctionCallRemoval": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Registry\\Summaries::summary",
+                "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
+            ]
+        },
+        "LessThan": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
+            ]
+        },
+        "LessThanNegotiation": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
+            ]
+        },
+        "MethodCallRemoval": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Registry\\Summaries::summary",
+                "WyriHaximus\\Metrics\\InMemory\\Summary::observe"
+            ]
+        },
+        "NotIdentical": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::observe"
+            ]
+        },
+        "PublicVisibility": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\Factory::createWithClock"
+            ]
+        },
+        "UnwrapArrayKeys": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
+            ]
+        },
+        "UnwrapArrayValues": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Registry\\Summaries::summaries"
+            ]
+        }
     }
 }

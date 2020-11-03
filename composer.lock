@@ -4,8 +4,69 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4a9567653f1adc9550d467f2ff647109",
+    "content-hash": "01558e6e88aadca83c68d69b8f25b5df",
     "packages": [
+        {
+            "name": "lcobucci/clock",
+            "version": "2.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/lcobucci/clock.git",
+                "reference": "353d83fe2e6ae95745b16b3d911813df6a05bfb3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lcobucci/clock/zipball/353d83fe2e6ae95745b16b3d911813df6a05bfb3",
+                "reference": "353d83fe2e6ae95745b16b3d911813df6a05bfb3",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.4 || ^8.0"
+            },
+            "require-dev": {
+                "infection/infection": "^0.17",
+                "lcobucci/coding-standard": "^6.0",
+                "phpstan/extension-installer": "^1.0",
+                "phpstan/phpstan": "^0.12",
+                "phpstan/phpstan-deprecation-rules": "^0.12",
+                "phpstan/phpstan-phpunit": "^0.12",
+                "phpstan/phpstan-strict-rules": "^0.12",
+                "phpunit/php-code-coverage": "9.1.4",
+                "phpunit/phpunit": "9.3.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Lcobucci\\Clock\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Luís Cobucci",
+                    "email": "lcobucci@gmail.com"
+                }
+            ],
+            "description": "Yet another clock abstraction",
+            "support": {
+                "issues": "https://github.com/lcobucci/clock/issues",
+                "source": "https://github.com/lcobucci/clock/tree/2.0.x"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/lcobucci",
+                    "type": "github"
+                },
+                {
+                    "url": "https://www.patreon.com/lcobucci",
+                    "type": "patreon"
+                }
+            ],
+            "time": "2020-08-27T18:56:02+00:00"
+        },
         {
             "name": "react-parallel/object-proxy-attributes",
             "version": "1.0.0",
@@ -200,6 +261,50 @@
                 "source": "https://github.com/thecodingmachine/safe/tree/v1.3.3"
             },
             "time": "2020-10-28T17:51:34+00:00"
+        },
+        {
+            "name": "wyrihaximus/constants",
+            "version": "1.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/WyriHaximus/php-constants.git",
+                "reference": "a2202b683261f8119f3772eb1e3469a2b5c4d9eb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/WyriHaximus/php-constants/zipball/a2202b683261f8119f3772eb1e3469a2b5c4d9eb",
+                "reference": "a2202b683261f8119f3772eb1e3469a2b5c4d9eb",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.0 || ^5.3"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/Boolean/constants_include.php",
+                    "src/ComposerAutoloader/constants_include.php",
+                    "src/HTTPStatusCodes/constants_include.php",
+                    "src/Numeric/constants_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Cees-Jan Kiewiet",
+                    "email": "ceesjank@gmail.com",
+                    "homepage": "https://www.wyrihaximus.net/"
+                }
+            ],
+            "description": "Collection of constants for PHP",
+            "support": {
+                "issues": "https://github.com/WyriHaximus/php-constants/issues",
+                "source": "https://github.com/WyriHaximus/php-constants/tree/master"
+            },
+            "time": "2020-04-02T21:00:04+00:00"
         }
     ],
     "packages-dev": [
