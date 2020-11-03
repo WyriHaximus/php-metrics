@@ -47,4 +47,16 @@ final class ConfigurationTest extends TestCase
         self::assertNotSame($summary, $summaryWithBucketCount);
         self::assertSame(13, $summaryWithBucketCount->bucketCount());
     }
+
+    /**
+     * @test
+     */
+    public function clockSummaryBucketTimeTemplate(): void
+    {
+        $summary                 = new Configuration\Summary();
+        $summaryWithTimeTemplate = $summary->withBucketTimeTemplate('abc');
+
+        self::assertNotSame($summary, $summaryWithTimeTemplate);
+        self::assertSame('abc', $summaryWithTimeTemplate->bucketTimeTemplate());
+    }
 }

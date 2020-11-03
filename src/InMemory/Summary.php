@@ -26,14 +26,13 @@ use const WyriHaximus\Constants\Numeric\ZERO;
 
 final class Summary implements SummaryInterface
 {
-    private const BUCKET_TIME_TEMPLATE = 'YzGi';
-
     private const RANDOM_MIN     = 0;
     private const RANDOM_TRIGGER = 13;
     private const RANDOM_MAX     = 100;
 
     private Clock $clock;
     private int $bucketCount;
+    private string $bucketTimeTemplate;
     private string $name;
     private string $description;
     private Quantiles $quantiles;
@@ -44,12 +43,13 @@ final class Summary implements SummaryInterface
 
     public function __construct(Configuration $configuration, string $name, string $description, Quantiles $quantiles, Label ...$labels)
     {
-        $this->clock       = $configuration->clock();
-        $this->bucketCount = $configuration->summary()->bucketCount();
-        $this->name        = $name;
-        $this->description = $description;
-        $this->quantiles   = $quantiles;
-        $this->labels      = $labels;
+        $this->clock              = $configuration->clock();
+        $this->bucketCount        = $configuration->summary()->bucketCount();
+        $this->bucketTimeTemplate = $configuration->summary()->bucketTimeTemplate();
+        $this->name               = $name;
+        $this->description        = $description;
+        $this->quantiles          = $quantiles;
+        $this->labels             = $labels;
     }
 
     public function name(): string
@@ -80,7 +80,7 @@ final class Summary implements SummaryInterface
 
     public function observe(float $value): void
     {
-        $this->floats[$this->clock->now()->format(self::BUCKET_TIME_TEMPLATE)][] = $value;
+        $this->floats[$this->clock->now()->format($this->bucketTimeTemplate)][] = $value;
 
         if (random_int(self::RANDOM_MIN, self::RANDOM_MAX) !== self::RANDOM_TRIGGER) {
             return;
