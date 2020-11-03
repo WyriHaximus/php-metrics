@@ -6,6 +6,7 @@ namespace WyriHaximus\Tests\Metrics\Printer;
 
 use Lcobucci\Clock\FrozenClock;
 use PHPUnit\Framework\TestCase;
+use WyriHaximus\Metrics\Configuration;
 use WyriHaximus\Metrics\Factory;
 use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Label\Name;
@@ -55,6 +56,6 @@ final class PrometheusTest extends TestCase
     public function provideRegistries(): iterable
     {
         yield 'default' => [Factory::create()];
-        yield 'with frozen UTC clock' => [Factory::createWithClock(FrozenClock::fromUTC())];
+        yield 'with frozen UTC clock' => [Factory::createWithConfiguration(Configuration::create()->withClock(FrozenClock::fromUTC()))];
     }
 }

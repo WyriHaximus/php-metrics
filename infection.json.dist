@@ -49,7 +49,7 @@
         },
         "PublicVisibility": {
             "ignore": [
-                "WyriHaximus\\Metrics\\Factory::createWithClock"
+                "WyriHaximus\\Metrics\\Factory::createWithConfiguration"
             ]
         },
         "UnwrapArrayKeys": {

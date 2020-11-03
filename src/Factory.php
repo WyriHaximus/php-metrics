@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Metrics;
 
-use Lcobucci\Clock\Clock;
 use Lcobucci\Clock\SystemClock;
 use WyriHaximus\Metrics\Histogram\Buckets;
 use WyriHaximus\Metrics\Summary\Quantiles;
@@ -40,12 +39,12 @@ final class Factory
 
     public static function create(): Registry
     {
-        return self::createWithClock(SystemClock::fromUTC());
+        return self::createWithConfiguration(Configuration::create()->withClock(SystemClock::fromUTC()));
     }
 
-    public static function createWithClock(Clock $clock): Registry
+    public static function createWithConfiguration(Configuration $configuration): Registry
     {
-        return new InMemory\Registry($clock);
+        return new InMemory\Registry($configuration);
     }
 
     public static function defaultBuckets(): Buckets
