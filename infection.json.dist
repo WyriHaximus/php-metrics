@@ -31,6 +31,16 @@
                 "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
             ]
         },
+        "LessThanOrEqualTo": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::observe"
+            ]
+        },
+        "LessThanOrEqualToNegotiation": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::observe"
+            ]
+        },
         "LessThanNegotiation": {
             "ignore": [
                 "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
@@ -40,6 +50,11 @@
             "ignore": [
                 "WyriHaximus\\Metrics\\InMemory\\Registry\\Summaries::summary",
                 "WyriHaximus\\Metrics\\InMemory\\Summary::observe"
+            ]
+        },
+        "Minus": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
             ]
         },
         "NotIdentical": {

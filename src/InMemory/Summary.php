@@ -16,7 +16,6 @@ use function array_map;
 use function array_merge;
 use function count;
 use function floor;
-use function random_int;
 use function Safe\ksort;
 use function Safe\sort;
 
@@ -26,10 +25,6 @@ use const WyriHaximus\Constants\Numeric\ZERO;
 
 final class Summary implements SummaryInterface
 {
-    private const RANDOM_MIN     = 0;
-    private const RANDOM_TRIGGER = 13;
-    private const RANDOM_MAX     = 100;
-
     private Clock $clock;
     private int $bucketCount;
     private string $bucketTimeTemplate;
@@ -82,7 +77,7 @@ final class Summary implements SummaryInterface
     {
         $this->floats[$this->clock->now()->format($this->bucketTimeTemplate)][] = $value;
 
-        if (random_int(self::RANDOM_MIN, self::RANDOM_MAX) !== self::RANDOM_TRIGGER) {
+        if (count($this->floats) <= $this->bucketCount) {
             return;
         }
 
@@ -94,8 +89,6 @@ final class Summary implements SummaryInterface
      */
     private function calculatePercentile(float $percentile): float
     {
-        $this->cleanUpBuckets();
-
         $array = array_merge(...$this->floats);
         sort($array);
         $index = $percentile * (count($array) - ONE);
