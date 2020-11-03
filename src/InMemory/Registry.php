@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Metrics\InMemory;
 
-use Lcobucci\Clock\Clock;
+use WyriHaximus\Metrics\Configuration;
 use WyriHaximus\Metrics\Histogram\Buckets;
 use WyriHaximus\Metrics\InMemory\Registry\Counters;
 use WyriHaximus\Metrics\InMemory\Registry\Gauges;
@@ -27,14 +27,14 @@ final class Registry implements RegistryInterface
 {
     private const SEPARATOR = 'w9fw9743c98tw3';
 
-    private Clock $clock;
+    private Configuration $configuration;
 
     /** @var array<string, Counters> */
     private array $counters = [];
 
-    public function __construct(Clock $clock)
+    public function __construct(Configuration $configuration)
     {
-        $this->clock = $clock;
+        $this->configuration = $configuration;
     }
 
     public function counter(string $name, string $description, Name ...$requiredLabelNames): CountersInterface
@@ -84,7 +84,7 @@ final class Registry implements RegistryInterface
         $key = $name . self::SEPARATOR . $description . self::SEPARATOR . implode(self::SEPARATOR, $quantiles->quantiles()) . self::SEPARATOR . implode(self::SEPARATOR, array_map(static fn (Name $name) => $name->name(), $requiredLabelNames));
 
         if (! array_key_exists($key, $this->summaries)) {
-            $this->summaries[$key] = new Summaries($this->clock, $name, $description, $quantiles, ...$requiredLabelNames);
+            $this->summaries[$key] = new Summaries($this->configuration->clock(), $name, $description, $quantiles, ...$requiredLabelNames);
         }
 
         return $this->summaries[$key];
