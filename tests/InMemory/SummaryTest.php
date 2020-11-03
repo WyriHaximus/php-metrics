@@ -6,6 +6,7 @@ namespace WyriHaximus\Tests\Metrics\InMemory;
 
 use Lcobucci\Clock\SystemClock;
 use PHPUnit\Framework\TestCase;
+use WyriHaximus\Metrics\Configuration;
 use WyriHaximus\Metrics\Factory;
 use WyriHaximus\Metrics\InMemory\Summary;
 use WyriHaximus\Metrics\Label;
@@ -21,7 +22,7 @@ final class SummaryTest extends TestCase
      */
     public function summary(): void
     {
-        $histogram = new Summary(SystemClock::fromUTC(), 'name', 'description', Factory::defaultQuantiles(), new Label('label', 'label'));
+        $histogram = new Summary(Configuration::create()->withClock(SystemClock::fromUTC()), 'name', 'description', Factory::defaultQuantiles(), new Label('label', 'label'));
         for ($i = 0; $i < 900; $i++) {
             $histogram->observe($i);
         }

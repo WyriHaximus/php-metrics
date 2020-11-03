@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace WyriHaximus\Metrics\InMemory;
 
 use Lcobucci\Clock\Clock;
+use WyriHaximus\Metrics\Configuration;
 use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Summary as SummaryInterface;
 use WyriHaximus\Metrics\Summary\Quantile;
@@ -27,13 +28,12 @@ final class Summary implements SummaryInterface
 {
     private const BUCKET_TIME_TEMPLATE = 'YzGi';
 
-    private const BUCKET_COUNT = 100;
-
     private const RANDOM_MIN     = 0;
     private const RANDOM_TRIGGER = 13;
     private const RANDOM_MAX     = 100;
 
     private Clock $clock;
+    private int $bucketCount;
     private string $name;
     private string $description;
     private Quantiles $quantiles;
@@ -42,9 +42,10 @@ final class Summary implements SummaryInterface
     /** @var array<string, array<float>> */
     private array $floats = [];
 
-    public function __construct(Clock $clock, string $name, string $description, Quantiles $quantiles, Label ...$labels)
+    public function __construct(Configuration $configuration, string $name, string $description, Quantiles $quantiles, Label ...$labels)
     {
-        $this->clock       = $clock;
+        $this->clock       = $configuration->clock();
+        $this->bucketCount = $configuration->summary()->bucketCount();
         $this->name        = $name;
         $this->description = $description;
         $this->quantiles   = $quantiles;
@@ -113,7 +114,7 @@ final class Summary implements SummaryInterface
     {
         ksort($this->floats);
         $keys = array_keys($this->floats);
-        for ($i = ZERO; $i < count($keys) - self::BUCKET_COUNT; $i++) {
+        for ($i = ZERO; $i < count($keys) - $this->bucketCount; $i++) {
             unset($this->floats[$keys[$i]]);
         }
     }

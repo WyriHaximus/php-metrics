@@ -84,7 +84,7 @@ final class Registry implements RegistryInterface
         $key = $name . self::SEPARATOR . $description . self::SEPARATOR . implode(self::SEPARATOR, $quantiles->quantiles()) . self::SEPARATOR . implode(self::SEPARATOR, array_map(static fn (Name $name) => $name->name(), $requiredLabelNames));
 
         if (! array_key_exists($key, $this->summaries)) {
-            $this->summaries[$key] = new Summaries($this->configuration->clock(), $name, $description, $quantiles, ...$requiredLabelNames);
+            $this->summaries[$key] = new Summaries($this->configuration, $name, $description, $quantiles, ...$requiredLabelNames);
         }
 
         return $this->summaries[$key];
