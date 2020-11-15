@@ -92,7 +92,7 @@ final class Summary implements SummaryInterface
         $array = array_merge(...$this->floats);
         sort($array);
         $index = $percentile * (count($array) - ONE);
-        if (floor($index) === $index) {
+        if (floor($index) === $index && ($index - ONE) >= 0) {
             /** @psalm-suppress InvalidArrayOffset */
             $result = ($array[$index - ONE] + $array[$index]) / TWO;
         } else {
