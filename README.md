@@ -1,4 +1,4 @@
-# Test utilities
+# Metrics
 
 ![Continuous Integration](https://github.com/wyrihaximus/php-metrics/workflows/Continuous%20Integration/badge.svg)
 [![Latest Stable Version](https://poser.pugx.org/wyrihaximus/metrics/v/stable.png)](https://packagist.org/packages/wyrihaximus/metrics)
