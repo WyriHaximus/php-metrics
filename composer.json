@@ -1,6 +1,6 @@
 {
     "name": "wyrihaximus/metrics",
-    "description": "\ud83d\udd75\ufe0f\u200d\u2640\ufe0f Pure metric VO's and registry",
+    "description": "\ud83d\udd75\ufe0f\u200d\u2640\ufe0f Prometheus modelled metric VO's and registry",
     "license": "MIT",
     "authors": [
         {
