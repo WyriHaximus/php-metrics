@@ -11,6 +11,7 @@ use WyriHaximus\Metrics\Registry\Gauges;
 use WyriHaximus\Metrics\Registry\Histograms;
 use WyriHaximus\Metrics\Registry\Summaries;
 
+use function addslashes;
 use function array_map;
 use function count;
 use function implode;
@@ -30,7 +31,7 @@ final class Prometheus implements Printer
             $labelCount = count($labels);
             if ($labelCount !== self::NO_LABELS_COUNT) {
                 $string .= '{';
-                $string .= implode(',', array_map(static fn (Label $label) => $label->name() . '="' . $label->value() . '"', $labels));
+                $string .= implode(',', array_map(static fn (Label $label) => $label->name() . '="' . addslashes($label->value()) . '"', $labels));
                 $string .= '}';
             }
 
@@ -61,7 +62,7 @@ final class Prometheus implements Printer
             $labelCount = count($labels);
             if ($labelCount !== self::NO_LABELS_COUNT) {
                 $string .= '{';
-                $string .= implode(',', array_map(static fn (Label $label) => $label->name() . '="' . $label->value() . '"', $labels));
+                $string .= implode(',', array_map(static fn (Label $label) => $label->name() . '="' . addslashes($label->value()) . '"', $labels));
                 $string .= '}';
             }
 
@@ -92,7 +93,7 @@ final class Prometheus implements Printer
             $labelCount   = count($labels);
             $labelsString = '';
             if ($labelCount !== self::NO_LABELS_COUNT) {
-                $labelsString = implode(',', array_map(static fn (Label $label) => $label->name() . '="' . $label->value() . '"', $labels));
+                $labelsString = implode(',', array_map(static fn (Label $label) => $label->name() . '="' . addslashes($label->value()) . '"', $labels));
             }
 
             foreach ($histogram->buckets() as $bucket) {
@@ -143,7 +144,7 @@ final class Prometheus implements Printer
             $labelCount   = count($labels);
             $labelsString = '';
             if ($labelCount !== self::NO_LABELS_COUNT) {
-                $labelsString = implode(',', array_map(static fn (Label $label) => $label->name() . '="' . $label->value() . '"', $labels));
+                $labelsString = implode(',', array_map(static fn (Label $label) => $label->name() . '="' . addslashes($label->value()) . '"', $labels));
             }
 
             foreach ($summary->quantiles() as $quantile) {
