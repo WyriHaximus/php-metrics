@@ -27,8 +27,8 @@ final class PrometheusTest extends TestCase
      */
     public function print(Registry $registry): void
     {
-        $registry->counter('counter', '', new Name('label'))->counter(new Label('label', 'label'))->incr();
-        $registry->counter('counter', '', new Name('label'))->counter(new Label('label', 'labol'))->incrBy(133);
+        $registry->counter('counter', '', new Name('label'), new Name('class'))->counter(new Label('label', 'label'), new Label('class', self::class))->incr();
+        $registry->counter('counter', '', new Name('label'), new Name('class'))->counter(new Label('label', 'labol'), new Label('class', self::class))->incrBy(133);
         $registry->counter('cuonter', 'simple counter counting things')->counter()->incr();
         $registry->counter('cuonter', 'simple counter counting things')->counter()->incrBy(133);
         $registry->gauge('gauge', '', new Name('label'))->gauge(new Label('label', 'label'))->incr();

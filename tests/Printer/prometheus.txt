@@ -1,6 +1,6 @@
 # TYPE counter_total counter
-counter_total{label="label"} 1
-counter_total{label="labol"} 133
+counter_total{class="WyriHaximus\\Tests\\Metrics\\Printer\\PrometheusTest",label="label"} 1
+counter_total{class="WyriHaximus\\Tests\\Metrics\\Printer\\PrometheusTest",label="labol"} 133
 
 # HELP cuonter_total simple counter counting things
 # TYPE cuonter_total counter
