@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "php": "^7.4",
+        "php": "^7.4 || ^8.0",
         "lcobucci/clock": "^2.0",
         "react-parallel/object-proxy-attributes": "^1",
         "thecodingmachine/safe": "^1.1",
@@ -17,7 +17,9 @@
     },
     "require-dev": {
         "phpbench/phpbench": "^0.17.1 || ^1.0.0",
-        "wyrihaximus/test-utilities": "^2.5 || ^3.0"
+        "phpstan/phpstan": "^0.12.99",
+        "vimeo/psalm": "^4.12",
+        "wyrihaximus/test-utilities": "^3.7.4"
     },
     "config": {
         "platform": {
