@@ -1,5 +1,5 @@
 # set all to phony
-SHELL=bash
+SHELL=sh
 
 .PHONY: *
 

@@ -1,1 +1,7 @@
-vendor
+vendor/
+.phpcs.cache
+.phpunit.result.cache
+build/
+covHtml/
+infection-log.txt
+.idea

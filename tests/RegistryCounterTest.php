@@ -11,7 +11,6 @@ use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Label\Name;
 
 use function array_map;
-use function iterator_to_array;
 
 final class RegistryCounterTest extends TestCase
 {
@@ -28,19 +27,19 @@ final class RegistryCounterTest extends TestCase
         $counter->counter(new Label('node', 'mushroom'), new Label('label', 'label'))->incrTo(133);
         $counter->counter(new Label('node', 'mushroom'), new Label('label', 'label'))->incrTo(133);
         $counter->counter(new Label('node', 'mushroom'), new Label('label', 'labol'))->incr();
-        $counters = iterator_to_array($counter->counters());
+        $counters = [...$counter->counters()];
         self::assertCount(2, $counters);
         self::assertSame([133, 1], array_map(static fn (Counter $counter) => $counter->count(), $counters));
         self::assertSame([['label', 'mushroom'], ['labol', 'mushroom']], array_map(static fn (Counter $counter) => array_map(static fn (Label $label) => $label->value(), $counter->labels()), $counters));
 
         $counter->counter(new Label('node', 'mushroom'), new Label('label', 'labol'))->incrBy(63);
-        $counters = iterator_to_array($counter->counters());
+        $counters = [...$counter->counters()];
         self::assertCount(2, $counters);
         self::assertSame([133, 64], array_map(static fn (Counter $counter) => $counter->count(), $counters));
         self::assertSame([['label', 'mushroom'], ['labol', 'mushroom']], array_map(static fn (Counter $counter) => array_map(static fn (Label $label) => $label->value(), $counter->labels()), $counters));
 
         $counter->counter(new Label('node', 'mushroom'), new Label('label', 'labal'));
-        $counters = iterator_to_array($counter->counters());
+        $counters = [...$counter->counters()];
         self::assertCount(3, $counters);
         self::assertSame([133, 64, 0], array_map(static fn (Counter $counter) => $counter->count(), $counters));
         self::assertSame([['label', 'mushroom'], ['labol', 'mushroom'], ['labal', 'mushroom']], array_map(static fn (Counter $counter) => array_map(static fn (Label $label) => $label->value(), $counter->labels()), $counters));
