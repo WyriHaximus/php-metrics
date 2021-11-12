@@ -69,24 +69,24 @@
         },
         {
             "name": "react-parallel/object-proxy-attributes",
-            "version": "1.0.0",
+            "version": "1.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/reactphp-parallel/object-proxy-attributes.git",
-                "reference": "dd73ba13b3f36fb2d7c2bd8eecee2d774d0109d0"
+                "reference": "2ee1cebc5f2a4dfd75f372ff77d144c631388859"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy-attributes/zipball/dd73ba13b3f36fb2d7c2bd8eecee2d774d0109d0",
-                "reference": "dd73ba13b3f36fb2d7c2bd8eecee2d774d0109d0",
+                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy-attributes/zipball/2ee1cebc5f2a4dfd75f372ff77d144c631388859",
+                "reference": "2ee1cebc5f2a4dfd75f372ff77d144c631388859",
                 "shasum": ""
             },
             "require": {
-                "php": "^7.4"
+                "php": "^8 || ^7.4"
             },
             "require-dev": {
                 "doctrine/annotations": "^1.11",
-                "wyrihaximus/test-utilities": "^2.9"
+                "wyrihaximus/test-utilities": "^2.9 || ^3.0"
             },
             "type": "library",
             "extra": {
@@ -113,7 +113,7 @@
             "description": "👨‍🚀🛰👩‍🚀 Attributes for react-parallel/object-proxy",
             "support": {
                 "issues": "https://github.com/reactphp-parallel/object-proxy-attributes/issues",
-                "source": "https://github.com/reactphp-parallel/object-proxy-attributes/tree/1.0.0"
+                "source": "https://github.com/reactphp-parallel/object-proxy-attributes/tree/1.1.0"
             },
             "funding": [
                 {
@@ -121,7 +121,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-31T14:14:06+00:00"
+            "time": "2021-11-11T08:41:45+00:00"
         },
         {
             "name": "thecodingmachine/safe",
