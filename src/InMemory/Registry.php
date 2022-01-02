@@ -12,6 +12,7 @@ use WyriHaximus\Metrics\InMemory\Registry\Histograms;
 use WyriHaximus\Metrics\InMemory\Registry\Summaries;
 use WyriHaximus\Metrics\Label\Name;
 use WyriHaximus\Metrics\Printer;
+use WyriHaximus\Metrics\PrintJob;
 use WyriHaximus\Metrics\Registry as RegistryInterface;
 use WyriHaximus\Metrics\Registry\Counters as CountersInterface;
 use WyriHaximus\Metrics\Registry\Gauges as GaugesInterface;
@@ -92,25 +93,7 @@ final class Registry implements RegistryInterface
 
     public function print(Printer $printer): string
     {
-        $string = '';
-
-        foreach ($this->counters as $counter) {
-            $string .= $printer->counter($counter);
-        }
-
-        foreach ($this->gauges as $gauge) {
-            $string .= $printer->gauge($gauge);
-        }
-
-        foreach ($this->histograms as $histogram) {
-            $string .= $printer->histogram($histogram);
-        }
-
-        foreach ($this->summaries as $summary) {
-            $string .= $printer->summary($summary);
-        }
-
-        return $string;
+        return $printer->print(new PrintJob($this->counters, $this->gauges, $this->histograms, $this->summaries));
     }
 
     /**
