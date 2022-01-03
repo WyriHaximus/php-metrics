@@ -79,3 +79,4 @@ summary{quantile="0.5",label="value"} 50
 summary{quantile="0.9",label="value"} 90
 summary{quantile="0.99",label="value"} 99
 
+# EOF

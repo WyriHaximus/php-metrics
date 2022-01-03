@@ -6,6 +6,7 @@ namespace WyriHaximus\Metrics\Printer;
 
 use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Printer;
+use WyriHaximus\Metrics\PrintJob;
 use WyriHaximus\Metrics\Registry\Counters;
 use WyriHaximus\Metrics\Registry\Gauges;
 use WyriHaximus\Metrics\Registry\Histograms;
@@ -22,7 +23,32 @@ final class Prometheus implements Printer
     private const NL              = "\n";
     private const NO_LABELS_COUNT = 0;
 
-    public function counter(Counters $counters): string
+    public function print(PrintJob $print): string
+    {
+        $string = '';
+
+        foreach ($print->counters as $counter) {
+            $string .= $this->counter($counter);
+        }
+
+        foreach ($print->gauges as $gauge) {
+            $string .= $this->gauge($gauge);
+        }
+
+        foreach ($print->histograms as $histogram) {
+            $string .= $this->histogram($histogram);
+        }
+
+        foreach ($print->summaries as $summary) {
+            $string .= $this->summary($summary);
+        }
+
+        $string .= '# EOF' . self::NL;
+
+        return $string;
+    }
+
+    private function counter(Counters $counters): string
     {
         $string = '';
         foreach ($counters->counters() as $counter) {
@@ -52,7 +78,7 @@ final class Prometheus implements Printer
         return $string . self::NL;
     }
 
-    public function gauge(Gauges $gauges): string
+    private function gauge(Gauges $gauges): string
     {
         $string = '';
 
@@ -84,7 +110,7 @@ final class Prometheus implements Printer
         return $string . self::NL;
     }
 
-    public function histogram(Histograms $histograms): string
+    private function histogram(Histograms $histograms): string
     {
         $string = '';
 
@@ -135,7 +161,7 @@ final class Prometheus implements Printer
         return $string . self::NL;
     }
 
-    public function summary(Summaries $summaries): string
+    private function summary(Summaries $summaries): string
     {
         $string = '';
 

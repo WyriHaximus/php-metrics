@@ -5929,16 +5929,16 @@
         },
         {
             "name": "roave/better-reflection",
-            "version": "5.0.0",
+            "version": "5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/BetterReflection.git",
-                "reference": "24a030165953af5e4193502de1b860e3e99633d3"
+                "reference": "4c4a1da87ef8cea3376ca934d219ccc3950357a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/24a030165953af5e4193502de1b860e3e99633d3",
-                "reference": "24a030165953af5e4193502de1b860e3e99633d3",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/4c4a1da87ef8cea3376ca934d219ccc3950357a7",
+                "reference": "4c4a1da87ef8cea3376ca934d219ccc3950357a7",
                 "shasum": ""
             },
             "require": {
@@ -5996,9 +5996,9 @@
             "description": "Better Reflection - an improved code reflection API",
             "support": {
                 "issues": "https://github.com/Roave/BetterReflection/issues",
-                "source": "https://github.com/Roave/BetterReflection/tree/5.0.0"
+                "source": "https://github.com/Roave/BetterReflection/tree/5.0.1"
             },
-            "time": "2021-12-25T17:47:19+00:00"
+            "time": "2022-01-03T21:39:01+00:00"
         },
         {
             "name": "roave/infection-static-analysis-plugin",
