@@ -10,9 +10,29 @@
     },
     "mutators": {
         "@default": true,
+        "Concat": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Registry::key"
+            ]
+        },
+        "ConcatOperandRemoval": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Registry::key"
+            ]
+        },
+        "Division": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
+            ]
+        },
         "Increment": {
             "ignore": [
                 "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
+            ]
+        },
+        "Identical": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
             ]
         },
         "For_": {
@@ -23,7 +43,18 @@
         "FunctionCallRemoval": {
             "ignore": [
                 "WyriHaximus\\Metrics\\InMemory\\Registry\\Summaries::summary",
-                "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
+                "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets",
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
+            ]
+        },
+        "GreaterThanOrEqualTo": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
+            ]
+        },
+        "GreaterThanOrEqualToNegotiation": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
             ]
         },
         "LessThan": {
@@ -46,6 +77,11 @@
                 "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
             ]
         },
+        "LogicalAnd": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
+            ]
+        },
         "MethodCallRemoval": {
             "ignore": [
                 "WyriHaximus\\Metrics\\InMemory\\Registry\\Summaries::summary",
@@ -54,7 +90,13 @@
         },
         "Minus": {
             "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile",
                 "WyriHaximus\\Metrics\\InMemory\\Summary::cleanUpBuckets"
+            ]
+        },
+        "Multiplication": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
             ]
         },
         "NotIdentical": {
@@ -62,9 +104,19 @@
                 "WyriHaximus\\Metrics\\InMemory\\Summary::observe"
             ]
         },
+        "Plus": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
+            ]
+        },
         "PublicVisibility": {
             "ignore": [
                 "WyriHaximus\\Metrics\\Factory::createWithConfiguration"
+            ]
+        },
+        "RoundingFamily": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
             ]
         },
         "UnwrapArrayKeys": {
