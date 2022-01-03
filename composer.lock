@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "069860cde22c19742db54d48c5253b0d",
+    "content-hash": "b296454c50a89c3f65c6c44408a0d77d",
     "packages": [
         {
             "name": "lcobucci/clock",
@@ -9387,11 +9387,11 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "^8.0"
+        "php": "^8.1"
     },
     "platform-dev": [],
     "platform-overrides": {
-        "php": "8.0.12"
+        "php": "8.1.2"
     },
     "plugin-api-version": "2.2.0"
 }
