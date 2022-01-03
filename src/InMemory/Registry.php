@@ -39,7 +39,7 @@ final class Registry implements RegistryInterface
 
     public function counter(string $name, string $description, Name ...$requiredLabelNames): CountersInterface
     {
-        $key = $name . self::SEPARATOR . $description . self::SEPARATOR . implode(self::SEPARATOR, array_map(static fn (Name $name) => $name->name(), $requiredLabelNames));
+        $key = $this->key($name, $description, [], ...$requiredLabelNames);
 
         if (! array_key_exists($key, $this->counters)) {
             $this->counters[$key] = new Counters($name, $description, ...$requiredLabelNames);
@@ -53,7 +53,7 @@ final class Registry implements RegistryInterface
 
     public function gauge(string $name, string $description, Name ...$requiredLabelNames): GaugesInterface
     {
-        $key = $name . self::SEPARATOR . $description . self::SEPARATOR . implode(self::SEPARATOR, array_map(static fn (Name $name) => $name->name(), $requiredLabelNames));
+        $key = $this->key($name, $description, [], ...$requiredLabelNames);
 
         if (! array_key_exists($key, $this->gauges)) {
             $this->gauges[$key] = new Gauges($name, $description, ...$requiredLabelNames);
@@ -67,7 +67,7 @@ final class Registry implements RegistryInterface
 
     public function histogram(string $name, string $description, Buckets $buckets, Name ...$requiredLabelNames): HistogramsInterface
     {
-        $key = $name . self::SEPARATOR . $description . self::SEPARATOR . implode(self::SEPARATOR, $buckets->buckets()) . self::SEPARATOR . implode(self::SEPARATOR, array_map(static fn (Name $name) => $name->name(), $requiredLabelNames));
+        $key = $this->key($name, $description, $buckets->buckets(), ...$requiredLabelNames);
 
         if (! array_key_exists($key, $this->histograms)) {
             $this->histograms[$key] = new Histograms($name, $description, $buckets, ...$requiredLabelNames);
@@ -81,7 +81,7 @@ final class Registry implements RegistryInterface
 
     public function summary(string $name, string $description, Quantiles $quantiles, Name ...$requiredLabelNames): SummariesInterface
     {
-        $key = $name . self::SEPARATOR . $description . self::SEPARATOR . implode(self::SEPARATOR, $quantiles->quantiles()) . self::SEPARATOR . implode(self::SEPARATOR, array_map(static fn (Name $name) => $name->name(), $requiredLabelNames));
+        $key = $this->key($name, $description, $quantiles->quantiles(), ...$requiredLabelNames);
 
         if (! array_key_exists($key, $this->summaries)) {
             $this->summaries[$key] = new Summaries($this->configuration, $name, $description, $quantiles, ...$requiredLabelNames);
@@ -111,5 +111,13 @@ final class Registry implements RegistryInterface
         }
 
         return $string;
+    }
+
+    /**
+     * @param array<mixed> $stuffing
+     */
+    private function key(string $name, string $description, array $stuffing, Name ...$requiredLabelNames): string
+    {
+        return $name . self::SEPARATOR . $description . self::SEPARATOR . implode(self::SEPARATOR, $stuffing) . self::SEPARATOR . implode(self::SEPARATOR, array_map(static fn (Name $name) => $name->name(), $requiredLabelNames));
     }
 }
