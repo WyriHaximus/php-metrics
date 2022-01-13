@@ -3191,9 +3191,6 @@
             "require": {
                 "php": "^7.1 || ^8.0"
             },
-            "replace": {
-                "myclabs/deep-copy": "self.version"
-            },
             "require-dev": {
                 "doctrine/collections": "^1.0",
                 "doctrine/common": "^2.6",
@@ -3402,16 +3399,16 @@
         },
         {
             "name": "nunomaduro/collision",
-            "version": "v5.10.0",
+            "version": "v5.11.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nunomaduro/collision.git",
-                "reference": "3004cfa49c022183395eabc6d0e5207dfe498d00"
+                "reference": "8b610eef8582ccdc05d8f2ab23305e2d37049461"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/3004cfa49c022183395eabc6d0e5207dfe498d00",
-                "reference": "3004cfa49c022183395eabc6d0e5207dfe498d00",
+                "url": "https://api.github.com/repos/nunomaduro/collision/zipball/8b610eef8582ccdc05d8f2ab23305e2d37049461",
+                "reference": "8b610eef8582ccdc05d8f2ab23305e2d37049461",
                 "shasum": ""
             },
             "require": {
@@ -3473,7 +3470,7 @@
             },
             "funding": [
                 {
-                    "url": "https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=66BYDWAT92N6L",
+                    "url": "https://www.paypal.com/paypalme/enunomaduro",
                     "type": "custom"
                 },
                 {
@@ -3485,31 +3482,31 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2021-09-20T15:06:32+00:00"
+            "time": "2022-01-10T16:22:52+00:00"
         },
         {
             "name": "ocramius/package-versions",
-            "version": "2.4.0",
+            "version": "2.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Ocramius/PackageVersions.git",
-                "reference": "8e96fb9f4671eff86e8e487ff45c49bdc2d2d677"
+                "reference": "deded4228eed848fc5eae2fa0149ceb43afd012a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/8e96fb9f4671eff86e8e487ff45c49bdc2d2d677",
-                "reference": "8e96fb9f4671eff86e8e487ff45c49bdc2d2d677",
+                "url": "https://api.github.com/repos/Ocramius/PackageVersions/zipball/deded4228eed848fc5eae2fa0149ceb43afd012a",
+                "reference": "deded4228eed848fc5eae2fa0149ceb43afd012a",
                 "shasum": ""
             },
             "require": {
-                "composer-runtime-api": "^2.1.0",
+                "composer-runtime-api": "^2.2.0",
                 "php": "~8.0.0 || ~8.1.0"
             },
             "replace": {
                 "composer/package-versions-deprecated": "*"
             },
             "require-dev": {
-                "composer/composer": "^2.1.8",
+                "composer/composer": "^2.2.0",
                 "doctrine/coding-standard": "^9.0.0",
                 "ext-zip": "^1.15.0",
                 "phpunit/phpunit": "^9.5.9",
@@ -3535,7 +3532,7 @@
             "description": "Provides efficient querying for installed package versions (no runtime IO)",
             "support": {
                 "issues": "https://github.com/Ocramius/PackageVersions/issues",
-                "source": "https://github.com/Ocramius/PackageVersions/tree/2.4.0"
+                "source": "https://github.com/Ocramius/PackageVersions/tree/2.5.0"
             },
             "funding": [
                 {
@@ -3547,7 +3544,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-09-19T02:32:19+00:00"
+            "time": "2021-12-22T12:00:55+00:00"
         },
         {
             "name": "ondram/ci-detector",
@@ -3676,16 +3673,16 @@
         },
         {
             "name": "orklah/psalm-insane-comparison",
-            "version": "v1.0.3",
+            "version": "v2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orklah/psalm-insane-comparison.git",
-                "reference": "770b9b5273afd16a25243c5895b6949c30dbaaea"
+                "reference": "659164543e044446e04e93ac54648e16a28310bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orklah/psalm-insane-comparison/zipball/770b9b5273afd16a25243c5895b6949c30dbaaea",
-                "reference": "770b9b5273afd16a25243c5895b6949c30dbaaea",
+                "url": "https://api.github.com/repos/orklah/psalm-insane-comparison/zipball/659164543e044446e04e93ac54648e16a28310bf",
+                "reference": "659164543e044446e04e93ac54648e16a28310bf",
                 "shasum": ""
             },
             "require": {
@@ -3724,9 +3721,9 @@
             "description": "Detects possible insane comparison (\"string\" == 0) to help migrate to PHP8",
             "support": {
                 "issues": "https://github.com/orklah/psalm-insane-comparison/issues",
-                "source": "https://github.com/orklah/psalm-insane-comparison/tree/v1.0.3"
+                "source": "https://github.com/orklah/psalm-insane-comparison/tree/v2.0.0"
             },
-            "time": "2021-01-12T17:01:14+00:00"
+            "time": "2022-01-10T17:38:52+00:00"
         },
         {
             "name": "pepakriz/phpstan-exception-rules",
@@ -5934,16 +5931,16 @@
         },
         {
             "name": "roave/better-reflection",
-            "version": "5.0.5",
+            "version": "5.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/BetterReflection.git",
-                "reference": "0802bfbd3fc8ed2e0eb79e9ea3012086b2ea55bb"
+                "reference": "1d22d8f6cff17d4486e4a0646acd3d2c5cdcca61"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/0802bfbd3fc8ed2e0eb79e9ea3012086b2ea55bb",
-                "reference": "0802bfbd3fc8ed2e0eb79e9ea3012086b2ea55bb",
+                "url": "https://api.github.com/repos/Roave/BetterReflection/zipball/1d22d8f6cff17d4486e4a0646acd3d2c5cdcca61",
+                "reference": "1d22d8f6cff17d4486e4a0646acd3d2c5cdcca61",
                 "shasum": ""
             },
             "require": {
@@ -6001,9 +5998,9 @@
             "description": "Better Reflection - an improved code reflection API",
             "support": {
                 "issues": "https://github.com/Roave/BetterReflection/issues",
-                "source": "https://github.com/Roave/BetterReflection/tree/5.0.5"
+                "source": "https://github.com/Roave/BetterReflection/tree/5.0.6"
             },
-            "time": "2022-01-09T17:37:40+00:00"
+            "time": "2022-01-10T08:49:04+00:00"
         },
         {
             "name": "roave/infection-static-analysis-plugin",
@@ -9300,16 +9297,16 @@
         },
         {
             "name": "wyrihaximus/test-utilities",
-            "version": "5.0.0",
+            "version": "5.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/WyriHaximus/php-test-utilities.git",
-                "reference": "fea74691615673f285a0ce5b7ff01bc5ed477e7a"
+                "reference": "fdac688d6186bda28c3364b0c0cce0d6dfed1607"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/fea74691615673f285a0ce5b7ff01bc5ed477e7a",
-                "reference": "fea74691615673f285a0ce5b7ff01bc5ed477e7a",
+                "url": "https://api.github.com/repos/WyriHaximus/php-test-utilities/zipball/fdac688d6186bda28c3364b0c0cce0d6dfed1607",
+                "reference": "fdac688d6186bda28c3364b0c0cce0d6dfed1607",
                 "shasum": ""
             },
             "require": {
@@ -9318,8 +9315,8 @@
                 "infection/infection": "^0.25.5",
                 "jakobbuis/simple-slow-test-reporter": "^1.0",
                 "maglnet/composer-require-checker": "^3.8.0",
-                "nunomaduro/collision": "^5.10.0",
-                "orklah/psalm-insane-comparison": "^1.0.3",
+                "nunomaduro/collision": "^5.11.0",
+                "orklah/psalm-insane-comparison": "^2.0.0",
                 "php": "^8",
                 "php-coveralls/php-coveralls": "^2.5.2",
                 "php-parallel-lint/php-console-highlighter": "^0.5",
@@ -9382,7 +9379,7 @@
             "description": "🛠️ Test utilities for api-clients packages",
             "support": {
                 "issues": "https://github.com/WyriHaximus/php-test-utilities/issues",
-                "source": "https://github.com/WyriHaximus/php-test-utilities/tree/5.0.0"
+                "source": "https://github.com/WyriHaximus/php-test-utilities/tree/5.0.1"
             },
             "funding": [
                 {
@@ -9390,7 +9387,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2022-01-08T20:20:49+00:00"
+            "time": "2022-01-11T06:37:39+00:00"
         }
     ],
     "aliases": [],
@@ -9405,5 +9402,5 @@
     "platform-overrides": {
         "php": "8.1.2"
     },
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.2.0"
 }
