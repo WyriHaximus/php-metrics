@@ -14,8 +14,8 @@ use function array_key_exists;
 use function array_map;
 use function array_values;
 use function implode;
-use function Safe\usort;
 use function strcmp;
+use function usort;
 
 final class Counters implements CountersInterface
 {
