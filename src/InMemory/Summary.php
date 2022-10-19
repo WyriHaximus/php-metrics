@@ -16,8 +16,8 @@ use function array_map;
 use function array_merge;
 use function count;
 use function floor;
-use function Safe\ksort;
-use function Safe\sort;
+use function ksort;
+use function sort;
 
 use const WyriHaximus\Constants\Numeric\ONE;
 use const WyriHaximus\Constants\Numeric\TWO;
