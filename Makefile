@@ -52,7 +52,7 @@ composer-require-checker:
 	$(DOCKER_RUN) vendor/bin/composer-require-checker --ignore-parse-errors --ansi -vvv --config-file=composer-require-checker.json
 
 composer-unused:
-	$(DOCKER_RUN) composer unused --ansi
+	$(DOCKER_RUN) vendor/bin/composer-unused --ansi
 
 promtool-check-metrics:
 	$(DOCKER_RUN) $(php example.php) | promtool check metrics

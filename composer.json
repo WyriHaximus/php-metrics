@@ -41,6 +41,11 @@
         },
         "sort-packages": true
     },
+    "extra": {
+        "unused": [
+            "thecodingmachine/safe"
+        ]
+    },
     "scripts": {
         "post-install-cmd": [
             "composer normalize"
