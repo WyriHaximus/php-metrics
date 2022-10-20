@@ -8,7 +8,7 @@ use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Label\Name;
 use WyriHaximus\Metrics\Printer\Prometheus;
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
 
 $registry = Factory::create();
 

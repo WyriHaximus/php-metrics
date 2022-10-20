@@ -55,4 +55,4 @@ composer-unused:
 	$(DOCKER_RUN) vendor/bin/composer-unused --ansi
 
 promtool-check-metrics:
-	$(DOCKER_RUN) $(php example.php) | promtool check metrics
+	docker run --rm -i -v "`pwd`:`pwd`" -w "`pwd`" "wyrihaximusnet/php:8.1-nts-alpine-slim-dev" php examples/basic.php | docker run --rm -i dnanexus/promtool:2.9.2 check metrics
