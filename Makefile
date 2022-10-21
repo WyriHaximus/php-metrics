@@ -46,7 +46,7 @@ unit-ci: unit
 	if [ -f ./build/logs/clover.xml ]; then sleep 3; fi
 
 infection:
-	$(DOCKER_RUN) vendor/bin/infection --ansi --min-msi=100 --min-covered-msi=100 --threads=$(nproc)
+	$(DOCKER_RUN) vendor/bin/infection --ansi --min-msi=100 --min-covered-msi=100 --threads=max
 
 composer-require-checker:
 	$(DOCKER_RUN) vendor/bin/composer-require-checker --ignore-parse-errors --ansi -vvv --config-file=composer-require-checker.json
