@@ -10,17 +10,13 @@ use WyriHaximus\Metrics\Label;
 
 final class Counter implements CounterInterface
 {
-    private string $name;
-    private string $description;
     private int $count = 0;
     /** @var array<Label> */
     private array $labels;
 
-    public function __construct(string $name, string $description, Label ...$labels)
+    public function __construct(private string $name, private string $description, Label ...$labels)
     {
-        $this->name        = $name;
-        $this->description = $description;
-        $this->labels      = $labels;
+        $this->labels = $labels;
     }
 
     public function name(): string
@@ -38,9 +34,7 @@ final class Counter implements CounterInterface
         return $this->count;
     }
 
-    /**
-     * @return array<Label>
-     */
+    /** @return array<Label> */
     public function labels(): array
     {
         return $this->labels;

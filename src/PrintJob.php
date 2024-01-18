@@ -16,7 +16,7 @@ final class PrintJob
         public readonly array $counters,
         public readonly array $gauges,
         public readonly array $histograms,
-        public readonly array $summaries
+        public readonly array $summaries,
     ) {
     }
 }

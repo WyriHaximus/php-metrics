@@ -14,9 +14,7 @@ final class Quantiles
         $this->quantiles = $quantiles;
     }
 
-    /**
-     * @return array<float>
-     */
+    /** @return array<float> */
     public function quantiles(): array
     {
         return $this->quantiles;

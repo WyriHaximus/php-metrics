@@ -21,17 +21,13 @@ final class Gauges implements GaugesInterface
 {
     private const SEPARATOR = '&%R*V^B)(*&^*%CEVR(B)&PY*';
 
-    private string $name;
-    private string $description;
     /** @var array<string> */
     private array $requiredLabelNames;
     /** @var array<Gauge> */
     private array $gauges = [];
 
-    public function __construct(string $name, string $description, Name ...$requiredLabelNames)
+    public function __construct(private string $name, private string $description, Name ...$requiredLabelNames)
     {
-        $this->name               = $name;
-        $this->description        = $description;
         $this->requiredLabelNames = array_map(static fn (Name $name) => $name->name(), $requiredLabelNames);
     }
 
@@ -54,8 +50,8 @@ final class Gauges implements GaugesInterface
             self::SEPARATOR,
             array_map(
                 static fn (Label $label) => $label->value(),
-                $labels
-            )
+                $labels,
+            ),
         );
 
         if (! array_key_exists($key, $this->gauges)) {
@@ -65,9 +61,7 @@ final class Gauges implements GaugesInterface
         return $this->gauges[$key];
     }
 
-    /**
-     * @return iterable<Gauge>
-     */
+    /** @return iterable<Gauge> */
     public function gauges(): iterable
     {
         yield from array_values($this->gauges);

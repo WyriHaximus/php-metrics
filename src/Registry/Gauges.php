@@ -14,13 +14,9 @@ interface Gauges
 
     public function description(): string;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function gauge(Label ...$labels): Gauge;
 
-    /**
-     * @return iterable<Gauge>
-     */
+    /** @return iterable<Gauge> */
     public function gauges(): iterable;
 }

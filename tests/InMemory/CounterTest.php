@@ -11,9 +11,7 @@ use WyriHaximus\Metrics\Label;
 
 final class CounterTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function counter(): void
     {
         self::expectException(IncreaseToCountLowerThanCounterCount::class);

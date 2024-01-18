@@ -13,8 +13,6 @@ use function array_map;
 
 final class Histogram implements HistogramInterface
 {
-    private string $name;
-    private string $description;
     /** @var array<Bucket> */
     private array $buckets;
     /** @var array<Label> */
@@ -22,12 +20,10 @@ final class Histogram implements HistogramInterface
     private float $summary = 0;
     private int $count     = 0;
 
-    public function __construct(string $name, string $description, Buckets $buckets, Label ...$labels)
+    public function __construct(private string $name, private string $description, Buckets $buckets, Label ...$labels)
     {
-        $this->name        = $name;
-        $this->description = $description;
-        $this->buckets     = array_map(static fn (float $quantile) => new Bucket((string) $quantile), $buckets->buckets());
-        $this->labels      = $labels;
+        $this->buckets = array_map(static fn (float $quantile) => new Bucket((string) $quantile), $buckets->buckets());
+        $this->labels  = $labels;
     }
 
     public function name(): string
@@ -40,9 +36,7 @@ final class Histogram implements HistogramInterface
         return $this->description;
     }
 
-    /**
-     * @return iterable<Bucket>
-     */
+    /** @return iterable<Bucket> */
     public function buckets(): iterable
     {
         yield from $this->buckets;
@@ -59,9 +53,7 @@ final class Histogram implements HistogramInterface
         return $this->count;
     }
 
-    /**
-     * @return array<Label>
-     */
+    /** @return array<Label> */
     public function labels(): array
     {
         return $this->labels;

@@ -13,18 +13,12 @@ interface Summary
 
     public function description(): string;
 
-    /**
-     * @return iterable<Quantile>
-     */
+    /** @return iterable<Quantile> */
     public function quantiles(): iterable;
 
-    /**
-     * @return array<Label>
-     */
+    /** @return array<Label> */
     public function labels(): array;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function observe(float $value): void;
 }

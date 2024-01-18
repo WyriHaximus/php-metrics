@@ -6,11 +6,8 @@ namespace WyriHaximus\Metrics\Label;
 
 final class Name
 {
-    private string $name;
-
-    public function __construct(string $name)
+    public function __construct(private string $name)
     {
-        $this->name = $name;
     }
 
     public function name(): string

@@ -14,13 +14,9 @@ interface Histograms
 
     public function description(): string;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function histogram(Label ...$labels): Histogram;
 
-    /**
-     * @return iterable<Histogram>
-     */
+    /** @return iterable<Histogram> */
     public function histograms(): iterable;
 }

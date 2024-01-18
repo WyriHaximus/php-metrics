@@ -15,24 +15,16 @@ use WyriHaximus\Metrics\Summary\Quantiles;
 
 interface Registry
 {
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function counter(string $name, string $description, Name ...$requiredLabelNames): Counters;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function gauge(string $name, string $description, Name ...$requiredLabelNames): Gauges;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function histogram(string $name, string $description, Buckets $buckets, Name ...$requiredLabelNames): Histograms;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function summary(string $name, string $description, Quantiles $quantiles, Name ...$requiredLabelNames): Summaries;
 
     public function print(Printer $printer): string;

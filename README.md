@@ -3,7 +3,6 @@
 ![Continuous Integration](https://github.com/wyrihaximus/php-metrics/workflows/Continuous%20Integration/badge.svg)
 [![Latest Stable Version](https://poser.pugx.org/wyrihaximus/metrics/v/stable.png)](https://packagist.org/packages/wyrihaximus/metrics)
 [![Total Downloads](https://poser.pugx.org/wyrihaximus/metrics/downloads.png)](https://packagist.org/packages/wyrihaximus/metrics/stats)
-[![Code Coverage](https://coveralls.io/repos/github/WyriHaximus/php-metrics/badge.svg?branchmaster)](https://coveralls.io/github/WyriHaximus/php-metrics?branch=master)
 [![Type Coverage](https://shepherd.dev/github/WyriHaximus/php-metrics/coverage.svg)](https://shepherd.dev/github/WyriHaximus/php-metrics)
 [![License](https://poser.pugx.org/wyrihaximus/metrics/license.png)](https://packagist.org/packages/wyrihaximus/metrics)
 
@@ -92,7 +91,7 @@ There is a full example in the [`examples`](examples/) directory that also inclu
 
 The MIT License (MIT)
 
-Copyright (c) 2020 Cees-Jan Kiewiet
+Copyright (c) 2024 Cees-Jan Kiewiet
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

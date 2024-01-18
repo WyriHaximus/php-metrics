@@ -14,9 +14,7 @@ use function array_map;
 
 final class RegistryCounterTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function counter(): void
     {
         $metricName        = 'name';
@@ -52,9 +50,7 @@ final class RegistryCounterTest extends TestCase
         }
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function faultyLabels(): void
     {
         self::expectException(Label\GivenLabelsDontMatchExpectedLabels::class);

@@ -14,13 +14,9 @@ interface Counters
 
     public function description(): string;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function counter(Label ...$labels): Counter;
 
-    /**
-     * @return iterable<Counter>
-     */
+    /** @return iterable<Counter> */
     public function counters(): iterable;
 }

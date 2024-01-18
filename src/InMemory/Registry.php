@@ -28,14 +28,11 @@ final class Registry implements RegistryInterface
 {
     private const SEPARATOR = 'w9fw9743c98tw3';
 
-    private Configuration $configuration;
-
     /** @var array<string, Counters> */
     private array $counters = [];
 
-    public function __construct(Configuration $configuration)
+    public function __construct(private Configuration $configuration)
     {
-        $this->configuration = $configuration;
     }
 
     public function counter(string $name, string $description, Name ...$requiredLabelNames): CountersInterface
@@ -96,9 +93,7 @@ final class Registry implements RegistryInterface
         return $printer->print(new PrintJob($this->counters, $this->gauges, $this->histograms, $this->summaries));
     }
 
-    /**
-     * @param array<mixed> $stuffing
-     */
+    /** @param array<float> $stuffing */
     private function key(string $name, string $description, array $stuffing, Name ...$requiredLabelNames): string
     {
         return $name . self::SEPARATOR . $description . self::SEPARATOR . implode(self::SEPARATOR, $stuffing) . self::SEPARATOR . implode(self::SEPARATOR, array_map(static fn (Name $name) => $name->name(), $requiredLabelNames));
