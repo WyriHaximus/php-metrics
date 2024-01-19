@@ -16,6 +16,7 @@ use WyriHaximus\Metrics\Registry;
 use function array_reverse;
 use function range;
 use function Safe\file_get_contents;
+use function str_replace;
 
 use const DIRECTORY_SEPARATOR;
 
@@ -44,15 +45,13 @@ final class PrometheusTest extends TestCase
         $registry->summary('sammury', 'simple summary sammury things', Factory::defaultQuantiles())->summary()->observe(0.6);
         $registry->summary('sammury', 'simple summary sammury things', Factory::defaultQuantiles())->summary()->observe(3.3);
         foreach (array_reverse(range(1, 100)) as $i) {
-            $registry->summary('summary', 'bla bla bla', Factory::defaultQuantiles(), new Name('label'))->summary(new Label('label', 'value'))->observe($i);
+            $registry->summary('sommary', 'bla bla bla', Factory::defaultQuantiles(), new Name('label'))->summary(new Label('label', 'value'))->observe($i);
         }
 
-        self::assertSame(file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'prometheus.txt'), $registry->print(new Prometheus()));
+        self::assertSame(str_replace("\r", '', file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'prometheus.txt')), $registry->print(new Prometheus()));
     }
 
-    /**
-     * @return iterable<string, array<Registry>>
-     */
+    /** @return iterable<string, array<Registry>> */
     public function provideRegistries(): iterable
     {
         yield 'default' => [Factory::create()];

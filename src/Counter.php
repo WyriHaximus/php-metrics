@@ -14,23 +14,15 @@ interface Counter
 
     public function count(): int;
 
-    /**
-     * @return array<Label>
-     */
+    /** @return array<Label> */
     public function labels(): array;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function incr(): void;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function incrBy(int $incr): void;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function incrTo(int $count): void;
 }

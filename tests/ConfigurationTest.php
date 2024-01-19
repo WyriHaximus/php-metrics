@@ -10,9 +10,7 @@ use WyriHaximus\Metrics\Configuration;
 
 final class ConfigurationTest extends TestCase
 {
-    /**
-     * @test
-     */
+    /** @test */
     public function clockClone(): void
     {
         $clock                  = FrozenClock::fromUTC();
@@ -23,9 +21,7 @@ final class ConfigurationTest extends TestCase
         self::assertSame($clock, $configurationWithClock->clock());
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function clockSummary(): void
     {
         $summary                = new Configuration\Summary();
@@ -36,9 +32,7 @@ final class ConfigurationTest extends TestCase
         self::assertSame($summary, $configurationWithClock->summary());
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function clockSummaryBucketCount(): void
     {
         $summary                = new Configuration\Summary();
@@ -48,9 +42,7 @@ final class ConfigurationTest extends TestCase
         self::assertSame(13, $summaryWithBucketCount->bucketCount());
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function clockSummaryBucketTimeTemplate(): void
     {
         $summary                 = new Configuration\Summary();

@@ -14,9 +14,7 @@ final class Buckets
         $this->buckets = $buckets;
     }
 
-    /**
-     * @return array<float>
-     */
+    /** @return array<float> */
     public function buckets(): array
     {
         return $this->buckets;

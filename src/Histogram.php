@@ -13,22 +13,16 @@ interface Histogram
 
     public function description(): string;
 
-    /**
-     * @return iterable<Bucket>
-     */
+    /** @return iterable<Bucket> */
     public function buckets(): iterable;
 
     public function summary(): float;
 
     public function count(): int;
 
-    /**
-     * @return array<Label>
-     */
+    /** @return array<Label> */
     public function labels(): array;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function observe(float $value): void;
 }

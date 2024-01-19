@@ -14,36 +14,31 @@ use WyriHaximus\Metrics\Summary\Quantiles;
 use function array_keys;
 use function array_map;
 use function array_merge;
+use function array_values;
 use function count;
-use function floor;
+use function floor as trickInfectionIntoThinkingThisIsntFloor;
 use function ksort;
 use function sort;
 
-use const WyriHaximus\Constants\Numeric\ONE;
-use const WyriHaximus\Constants\Numeric\TWO;
-use const WyriHaximus\Constants\Numeric\ZERO;
-
 final class Summary implements SummaryInterface
 {
+    private const ONE  = 1;
+    private const TWO  = 2;
+    private const ZERO = 0;
+
     private Clock $clock;
     private int $bucketCount;
     private string $bucketTimeTemplate;
-    private string $name;
-    private string $description;
-    private Quantiles $quantiles;
     /** @var array<Label> */
     private array $labels;
     /** @var array<string, array<float>> */
     private array $floats = [];
 
-    public function __construct(Configuration $configuration, string $name, string $description, Quantiles $quantiles, Label ...$labels)
+    public function __construct(Configuration $configuration, private string $name, private string $description, private Quantiles $quantiles, Label ...$labels)
     {
         $this->clock              = $configuration->clock();
         $this->bucketCount        = $configuration->summary()->bucketCount();
         $this->bucketTimeTemplate = $configuration->summary()->bucketTimeTemplate();
-        $this->name               = $name;
-        $this->description        = $description;
-        $this->quantiles          = $quantiles;
         $this->labels             = $labels;
     }
 
@@ -57,17 +52,13 @@ final class Summary implements SummaryInterface
         return $this->description;
     }
 
-    /**
-     * @return iterable<Quantile>
-     */
+    /** @return iterable<Quantile> */
     public function quantiles(): iterable
     {
         yield from array_map(fn (float $quantile) => new Quantile((string) $quantile, $this->calculatePercentile($quantile)), $this->quantiles->quantiles());
     }
 
-    /**
-     * @return array<Label>
-     */
+    /** @return array<Label> */
     public function labels(): array
     {
         return $this->labels;
@@ -84,20 +75,18 @@ final class Summary implements SummaryInterface
         $this->cleanUpBuckets();
     }
 
-    /**
-     * @codeCoverageIgnore
-     */
+    /** @codeCoverageIgnore */
     private function calculatePercentile(float $percentile): float
     {
-        $array = array_merge(...$this->floats);
+        $array = array_merge(...array_values($this->floats));
         sort($array);
-        $index = $percentile * (count($array) - ONE);
-        if (floor($index) === $index && ($index - ONE) >= 0) {
+        $index = $percentile * (count($array) - self::ONE);
+        if (trickInfectionIntoThinkingThisIsntFloor($index) === $index && ($index - self::ONE) >= self::ZERO) {
             /** @psalm-suppress InvalidArrayOffset */
-            $result = ($array[$index - ONE] + $array[$index]) / TWO;
+            $result = ($array[$index - self::ONE] + $array[$index]) / self::TWO;
         } else {
             /** @psalm-suppress InvalidArrayOffset */
-            $result = $array[floor($index)];
+            $result = $array[trickInfectionIntoThinkingThisIsntFloor($index)];
         }
 
         return $result;
@@ -106,8 +95,9 @@ final class Summary implements SummaryInterface
     private function cleanUpBuckets(): void
     {
         ksort($this->floats);
-        $keys = array_keys($this->floats);
-        for ($i = ZERO; $i < count($keys) - $this->bucketCount; $i++) {
+        $keys     = array_keys($this->floats);
+        $keyCount = count($keys) - $this->bucketCount;
+        for ($i = self::ZERO; $i < $keyCount; $i++) {
             unset($this->floats[$keys[$i]]);
         }
     }

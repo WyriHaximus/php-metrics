@@ -14,13 +14,9 @@ interface Summaries
 
     public function description(): string;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function summary(Label ...$labels): Summary;
 
-    /**
-     * @return iterable<Summary>
-     */
+    /** @return iterable<Summary> */
     public function summaries(): iterable;
 }

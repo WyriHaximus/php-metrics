@@ -6,13 +6,8 @@ namespace WyriHaximus\Metrics\Summary;
 
 final class Quantile
 {
-    private string $quantile;
-    private float $value;
-
-    public function __construct(string $quantile, float $value)
+    public function __construct(private string $quantile, private float $value)
     {
-        $this->quantile = $quantile;
-        $this->value    = $value;
     }
 
     public function quantile(): string

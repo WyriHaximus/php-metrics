@@ -9,17 +9,13 @@ use WyriHaximus\Metrics\Label;
 
 final class Gauge implements GaugeInterface
 {
-    private string $name;
-    private string $description;
     private int $gauge = 0;
     /** @var array<Label> */
     private array $labels;
 
-    public function __construct(string $name, string $description, Label ...$labels)
+    public function __construct(private string $name, private string $description, Label ...$labels)
     {
-        $this->name        = $name;
-        $this->description = $description;
-        $this->labels      = $labels;
+        $this->labels = $labels;
     }
 
     public function name(): string
@@ -37,9 +33,7 @@ final class Gauge implements GaugeInterface
         return $this->gauge;
     }
 
-    /**
-     * @return array<Label>
-     */
+    /** @return array<Label> */
     public function labels(): array
     {
         return $this->labels;

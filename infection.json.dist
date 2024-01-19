@@ -6,7 +6,10 @@
         ]
     },
     "logs": {
-        "text": "infection-log.txt"
+        "text": "./var/infection.log",
+        "summary": "./var/infection-summary.log",
+        "json": "./var/infection.json",
+        "perMutator": "./var/infection-per-mutator.md"
     },
     "mutators": {
         "@default": true,
@@ -82,6 +85,16 @@
                 "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
             ]
         },
+        "LogicalAndNegation": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
+            ]
+        },
+        "LogicalAndAllSubExprNegation": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
+            ]
+        },
         "MethodCallRemoval": {
             "ignore": [
                 "WyriHaximus\\Metrics\\InMemory\\Registry\\Summaries::summary",
@@ -126,8 +139,14 @@
         },
         "UnwrapArrayValues": {
             "ignore": [
-                "WyriHaximus\\Metrics\\InMemory\\Registry\\Summaries::summaries"
+                "WyriHaximus\\Metrics\\InMemory\\Registry\\Summaries::summaries",
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
             ]
         }
-    }
+    },
+    "phpUnit": {
+        "configDir": "./etc/qa/"
+    },
+    "minMsi": 100,
+    "minCoveredMsi": 100
 }

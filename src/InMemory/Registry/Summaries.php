@@ -22,21 +22,13 @@ final class Summaries implements SummariesInterface
 {
     private const SEPARATOR = 'aefnpawpijo%*&^)(3w4q1japwe';
 
-    private Configuration $configuration;
-    private string $name;
-    private string $description;
-    private Quantiles $quantiles;
     /** @var array<string> */
     private array $requiredLabelNames;
     /** @var array<Summary> */
     private array $summaries = [];
 
-    public function __construct(Configuration $configuration, string $name, string $description, Quantiles $quantiles, Name ...$requiredLabelNames)
+    public function __construct(private Configuration $configuration, private string $name, private string $description, private Quantiles $quantiles, Name ...$requiredLabelNames)
     {
-        $this->configuration      = $configuration;
-        $this->name               = $name;
-        $this->description        = $description;
-        $this->quantiles          = $quantiles;
         $this->requiredLabelNames = array_map(static fn (Name $name) => $name->name(), $requiredLabelNames);
     }
 
@@ -59,7 +51,7 @@ final class Summaries implements SummariesInterface
             self::SEPARATOR,
             array_map(
                 static fn (Label $label) => $label->value(),
-                $labels
+                $labels,
             ),
         );
 
@@ -70,9 +62,7 @@ final class Summaries implements SummariesInterface
         return $this->summaries[$key];
     }
 
-    /**
-     * @return iterable<Summary>
-     */
+    /** @return iterable<Summary> */
     public function summaries(): iterable
     {
         yield from array_values($this->summaries);

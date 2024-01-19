@@ -21,17 +21,13 @@ final class Counters implements CountersInterface
 {
     private const SEPARATOR = '#@$%^&*()';
 
-    private string $name;
-    private string $description;
     /** @var array<string> */
     private array $requiredLabelNames;
     /** @var array<Counter> */
     private array $counters = [];
 
-    public function __construct(string $name, string $description, Name ...$requiredLabelNames)
+    public function __construct(private string $name, private string $description, Name ...$requiredLabelNames)
     {
-        $this->name               = $name;
-        $this->description        = $description;
         $this->requiredLabelNames = array_map(static fn (Name $name) => $name->name(), $requiredLabelNames);
     }
 
@@ -54,8 +50,8 @@ final class Counters implements CountersInterface
             self::SEPARATOR,
             array_map(
                 static fn (Label $label) => $label->value(),
-                $labels
-            )
+                $labels,
+            ),
         );
 
         if (! array_key_exists($key, $this->counters)) {
@@ -65,9 +61,7 @@ final class Counters implements CountersInterface
         return $this->counters[$key];
     }
 
-    /**
-     * @return iterable<Counter>
-     */
+    /** @return iterable<Counter> */
     public function counters(): iterable
     {
         yield from array_values($this->counters);

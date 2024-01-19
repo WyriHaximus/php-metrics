@@ -14,33 +14,21 @@ interface Gauge
 
     public function gauge(): int;
 
-    /**
-     * @return array<Label>
-     */
+    /** @return array<Label> */
     public function labels(): array;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function incr(): void;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function incrBy(int $incr): void;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function set(int $count): void;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function dcrBy(int $dcr): void;
 
-    /**
-     * @Defer()
-     */
+    /** @Defer() */
     public function dcr(): void;
 }

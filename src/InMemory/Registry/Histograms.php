@@ -22,19 +22,13 @@ final class Histograms implements HistogramsInterface
 {
     private const SEPARATOR = 'w34yw3[qi2c';
 
-    private string $name;
-    private string $description;
-    private Buckets $buckets;
     /** @var array<string> */
     private array $requiredLabelNames;
     /** @var array<Histogram> */
     private array $histograms = [];
 
-    public function __construct(string $name, string $description, Buckets $buckets, Name ...$requiredLabelNames)
+    public function __construct(private string $name, private string $description, private Buckets $buckets, Name ...$requiredLabelNames)
     {
-        $this->name               = $name;
-        $this->description        = $description;
-        $this->buckets            = $buckets;
         $this->requiredLabelNames = array_map(static fn (Name $name) => $name->name(), $requiredLabelNames);
     }
 
@@ -57,8 +51,8 @@ final class Histograms implements HistogramsInterface
             self::SEPARATOR,
             array_map(
                 static fn (Label $label) => $label->value(),
-                $labels
-            )
+                $labels,
+            ),
         );
 
         if (! array_key_exists($key, $this->histograms)) {
@@ -68,9 +62,7 @@ final class Histograms implements HistogramsInterface
         return $this->histograms[$key];
     }
 
-    /**
-     * @return iterable<Histogram>
-     */
+    /** @return iterable<Histogram> */
     public function histograms(): iterable
     {
         yield from array_values($this->histograms);

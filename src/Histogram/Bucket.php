@@ -6,12 +6,10 @@ namespace WyriHaximus\Metrics\Histogram;
 
 final class Bucket
 {
-    private string $le;
     private int $count = 0;
 
-    public function __construct(string $le)
+    public function __construct(private string $le)
     {
-        $this->le = $le;
     }
 
     public static function createWithCount(string $le, int $count): self
