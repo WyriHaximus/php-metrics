@@ -8,7 +8,7 @@ use InvalidArgumentException;
 
 final class GivenLabelsDontMatchExpectedLabels extends InvalidArgumentException
 {
-    private const MESSAGE = 'Given labels don\'t match expected labels';
+    private const string MESSAGE = 'Given labels don\'t match expected labels';
 
     //phpcs:disable
     /** @var array<string> */

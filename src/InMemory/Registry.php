@@ -26,7 +26,7 @@ use function implode;
 
 final class Registry implements RegistryInterface
 {
-    private const SEPARATOR = 'w9fw9743c98tw3';
+    private const string SEPARATOR = 'w9fw9743c98tw3';
 
     /** @var array<string, Counters> */
     private array $counters = [];

@@ -20,7 +20,7 @@ use function usort;
 
 final class Histograms implements HistogramsInterface
 {
-    private const SEPARATOR = 'w34yw3[qi2c';
+    private const string SEPARATOR = 'w34yw3[qi2c';
 
     /** @var array<string> */
     private array $requiredLabelNames;

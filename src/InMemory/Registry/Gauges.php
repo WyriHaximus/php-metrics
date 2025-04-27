@@ -19,7 +19,7 @@ use function usort;
 
 final class Gauges implements GaugesInterface
 {
-    private const SEPARATOR = '&%R*V^B)(*&^*%CEVR(B)&PY*';
+    private const string SEPARATOR = '&%R*V^B)(*&^*%CEVR(B)&PY*';
 
     /** @var array<string> */
     private array $requiredLabelNames;

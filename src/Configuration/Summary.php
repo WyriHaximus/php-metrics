@@ -6,8 +6,8 @@ namespace WyriHaximus\Metrics\Configuration;
 
 final class Summary
 {
-    private const BUCKET_COUNT         = 10;
-    private const BUCKET_TIME_TEMPLATE = 'YzGi';
+    private const int BUCKET_COUNT            = 10;
+    private const string BUCKET_TIME_TEMPLATE = 'YzGi';
 
     private int $buckets               = self::BUCKET_COUNT;
     private string $bucketTimeTemplate = self::BUCKET_TIME_TEMPLATE;
