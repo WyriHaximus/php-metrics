@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Tests\Metrics;
 
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\Metrics\Factory;
 use WyriHaximus\Metrics\Histogram;
 use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Label\Name;
+use WyriHaximus\TestUtilities\TestCase;
 
 use function array_map;
 use function array_merge;
@@ -16,7 +17,7 @@ use function array_values;
 
 final class RegistryHistogramTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function histogram(): void
     {
         $metricName        = 'name';
@@ -50,16 +51,13 @@ final class RegistryHistogramTest extends TestCase
 
         self::assertSame($metricName, $histogram->name());
         self::assertSame($metricDescription, $histogram->description());
-        foreach ($histograms as $uniqueHistogram) {
-            self::assertSame($metricName, $uniqueHistogram->name());
-            self::assertSame($metricDescription, $uniqueHistogram->description());
-        }
     }
 
-    /** @test */
+    #[Test]
     public function faultyLabels(): void
     {
         self::expectException(Label\GivenLabelsDontMatchExpectedLabels::class);
+        self::expectExceptionMessage(Label\GivenLabelsDontMatchExpectedLabels::MESSAGE);
 
         $metricName        = 'name';
         $metricDescription = 'Description';

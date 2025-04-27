@@ -6,10 +6,6 @@ namespace WyriHaximus\Metrics;
 
 interface Gauge
 {
-    public function name(): string;
-
-    public function description(): string;
-
     public function gauge(): int;
 
     /** @return array<Label> */

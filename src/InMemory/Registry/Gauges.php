@@ -55,7 +55,7 @@ final class Gauges implements GaugesInterface
         );
 
         if (! array_key_exists($key, $this->gauges)) {
-            $this->gauges[$key] = new Gauge($this->name, $this->description, ...$labels);
+            $this->gauges[$key] = new Gauge(...$labels);
         }
 
         return $this->gauges[$key];

@@ -83,7 +83,7 @@ final class Prometheus implements Printer
         $string = '';
 
         foreach ($gauges->gauges() as $gauge) {
-            $string    .= $gauge->name();
+            $string    .= $gauges->name();
             $labels     = $gauge->labels();
             $labelCount = count($labels);
             if ($labelCount !== self::NO_LABELS_COUNT) {
@@ -123,7 +123,7 @@ final class Prometheus implements Printer
             }
 
             foreach ($histogram->buckets() as $bucket) {
-                $string .= $histogram->name() . '_bucket{le="' . $bucket->le() . '"';
+                $string .= $histograms->name() . '_bucket{le="' . $bucket->le() . '"';
                 if ($labelCount !== self::NO_LABELS_COUNT) {
                     $string .= ',' . $labelsString;
                 }
@@ -131,14 +131,14 @@ final class Prometheus implements Printer
                 $string .= '} ' . $bucket->count() . self::NL;
             }
 
-            $string .= $histogram->name() . '_sum';
+            $string .= $histograms->name() . '_sum';
             if ($labelCount !== self::NO_LABELS_COUNT) {
                 $string .= '{' . $labelsString . '}';
             }
 
             $string .= ' ' . $histogram->summary() . self::NL;
 
-            $string .= $histogram->name() . '_count';
+            $string .= $histograms->name() . '_count';
             if ($labelCount !== self::NO_LABELS_COUNT) {
                 $string .= '{' . $labelsString . '}';
             }
@@ -174,7 +174,7 @@ final class Prometheus implements Printer
             }
 
             foreach ($summary->quantiles() as $quantile) {
-                $string .= $summary->name() . '{quantile="' . $quantile->quantile() . '"';
+                $string .= $summaries->name() . '{quantile="' . $quantile->quantile() . '"';
                 if ($labelCount !== self::NO_LABELS_COUNT) {
                     $string .= ',' . $labelsString;
                 }

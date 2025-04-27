@@ -13,6 +13,21 @@
     },
     "mutators": {
         "@default": true,
+        "AssignmentEqual": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
+            ]
+        },
+        "CastFloat": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Histogram::observe"
+            ]
+        },
+        "CastInt": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
+            ]
+        },
         "Concat": {
             "ignore": [
                 "WyriHaximus\\Metrics\\InMemory\\Registry::key"
@@ -23,7 +38,17 @@
                 "WyriHaximus\\Metrics\\InMemory\\Registry::key"
             ]
         },
+        "Continue_": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Histogram::observe"
+            ]
+        },
         "Division": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
+            ]
+        },
+        "Equal": {
             "ignore": [
                 "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"
             ]

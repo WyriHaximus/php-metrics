@@ -5,12 +5,13 @@ declare(strict_types=1);
 namespace WyriHaximus\Tests\Metrics;
 
 use Lcobucci\Clock\FrozenClock;
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\Metrics\Configuration;
+use WyriHaximus\TestUtilities\TestCase;
 
 final class ConfigurationTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function clockClone(): void
     {
         $clock                  = FrozenClock::fromUTC();
@@ -21,7 +22,7 @@ final class ConfigurationTest extends TestCase
         self::assertSame($clock, $configurationWithClock->clock());
     }
 
-    /** @test */
+    #[Test]
     public function clockSummary(): void
     {
         $summary                = new Configuration\Summary();
@@ -32,7 +33,7 @@ final class ConfigurationTest extends TestCase
         self::assertSame($summary, $configurationWithClock->summary());
     }
 
-    /** @test */
+    #[Test]
     public function clockSummaryBucketCount(): void
     {
         $summary                = new Configuration\Summary();
@@ -42,7 +43,7 @@ final class ConfigurationTest extends TestCase
         self::assertSame(13, $summaryWithBucketCount->bucketCount());
     }
 
-    /** @test */
+    #[Test]
     public function clockSummaryBucketTimeTemplate(): void
     {
         $summary                 = new Configuration\Summary();

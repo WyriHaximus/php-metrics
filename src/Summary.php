@@ -8,10 +8,6 @@ use WyriHaximus\Metrics\Summary\Quantile;
 
 interface Summary
 {
-    public function name(): string;
-
-    public function description(): string;
-
     /** @return iterable<Quantile> */
     public function quantiles(): iterable;
 

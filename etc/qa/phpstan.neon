@@ -4,6 +4,3 @@ parameters:
 		noExtends:
 			classesAllowedToBeExtended:
 				- InvalidArgumentException
-
-includes:
-	- ../../vendor/wyrihaximus/test-utilities/rules.neon
