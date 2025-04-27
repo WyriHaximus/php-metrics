@@ -14,7 +14,6 @@
     },
     "require-dev": {
         "phpbench/phpbench": "^1.2.3",
-        "thecodingmachine/safe": "^2.5",
         "wyrihaximus/test-utilities": "^5.6"
     },
     "autoload": {
