@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "04a270eaf2c1a6d5d258cb578c81689d",
+    "content-hash": "764fbab3ac162268b9108c1c45d6fdb8",
     "packages": [
         {
             "name": "lcobucci/clock",
@@ -117,62 +117,6 @@
                 "source": "https://github.com/php-fig/clock/tree/1.0.0"
             },
             "time": "2022-11-25T14:36:26+00:00"
-        },
-        {
-            "name": "react-parallel/object-proxy-attributes",
-            "version": "1.1.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/reactphp-parallel/object-proxy-attributes.git",
-                "reference": "2ee1cebc5f2a4dfd75f372ff77d144c631388859"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/reactphp-parallel/object-proxy-attributes/zipball/2ee1cebc5f2a4dfd75f372ff77d144c631388859",
-                "reference": "2ee1cebc5f2a4dfd75f372ff77d144c631388859",
-                "shasum": ""
-            },
-            "require": {
-                "php": "^8 || ^7.4"
-            },
-            "require-dev": {
-                "doctrine/annotations": "^1.11",
-                "wyrihaximus/test-utilities": "^2.9 || ^3.0"
-            },
-            "type": "library",
-            "extra": {
-                "unused": [
-                    "php"
-                ]
-            },
-            "autoload": {
-                "psr-4": {
-                    "ReactParallel\\ObjectProxy\\Attribute\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Cees-Jan Kiewiet",
-                    "email": "ceesjank@gmail.com",
-                    "homepage": "http://wyrihaximus.net/"
-                }
-            ],
-            "description": "👨‍🚀🛰👩‍🚀 Attributes for react-parallel/object-proxy",
-            "support": {
-                "issues": "https://github.com/reactphp-parallel/object-proxy-attributes/issues",
-                "source": "https://github.com/reactphp-parallel/object-proxy-attributes/tree/1.1.0"
-            },
-            "funding": [
-                {
-                    "url": "https://github.com/WyriHaximus",
-                    "type": "github"
-                }
-            ],
-            "time": "2021-11-11T08:41:45+00:00"
         }
     ],
     "packages-dev": [
@@ -10890,13 +10834,13 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
         "php": "^8.2"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "platform-overrides": {
         "php": "8.2.13"
     },
