@@ -9,7 +9,7 @@ use DateTimeZone;
 use Lcobucci\Clock\FrozenClock;
 use Lcobucci\Clock\SystemClock;
 use PHPUnit\Framework\TestCase;
-use Safe\DateTimeImmutable;
+use DateTimeImmutable;
 use WyriHaximus\Metrics\Configuration;
 use WyriHaximus\Metrics\Factory;
 use WyriHaximus\Metrics\InMemory\Summary;

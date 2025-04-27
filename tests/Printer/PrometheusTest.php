@@ -14,8 +14,8 @@ use WyriHaximus\Metrics\Printer\Prometheus;
 use WyriHaximus\Metrics\Registry;
 
 use function array_reverse;
+use function file_get_contents;
 use function range;
-use function Safe\file_get_contents;
 use function str_replace;
 
 use const DIRECTORY_SEPARATOR;
@@ -28,6 +28,9 @@ final class PrometheusTest extends TestCase
      */
     public function print(Registry $registry): void
     {
+        $expectedPrometheusPrint = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'prometheus.txt');
+        self::assertIsString($expectedPrometheusPrint);
+
         $registry->counter('counter', '', new Name('label'), new Name('class'))->counter(new Label('label', 'label'), new Label('class', self::class))->incr();
         $registry->counter('counter', '', new Name('label'), new Name('class'))->counter(new Label('label', 'labol'), new Label('class', self::class))->incrBy(133);
         $registry->counter('cuonter', 'simple counter counting things')->counter()->incr();
@@ -48,7 +51,7 @@ final class PrometheusTest extends TestCase
             $registry->summary('sommary', 'bla bla bla', Factory::defaultQuantiles(), new Name('label'))->summary(new Label('label', 'value'))->observe($i);
         }
 
-        self::assertSame(str_replace("\r", '', file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'prometheus.txt')), $registry->print(new Prometheus()));
+        self::assertSame(str_replace("\r", '', $expectedPrometheusPrint), $registry->print(new Prometheus()));
     }
 
     /** @return iterable<string, array<Registry>> */
