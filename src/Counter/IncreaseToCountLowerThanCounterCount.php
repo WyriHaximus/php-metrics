@@ -8,7 +8,7 @@ use InvalidArgumentException;
 
 final class IncreaseToCountLowerThanCounterCount extends InvalidArgumentException
 {
-    private const MESSAGE = 'Increase to count higher than counter count';
+    private const string MESSAGE = 'Increase to count higher than counter count';
 
     //phpcs:disable
     /** @psalm-suppress MissingConstructor */

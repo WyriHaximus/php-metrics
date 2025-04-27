@@ -10,7 +10,7 @@ use WyriHaximus\Metrics\Summary\Quantiles;
 
 final class Factory
 {
-    private const DEFAULT_BUCKETS = [
+    private const array DEFAULT_BUCKETS = [
         0.001,
         0.0025,
         0.005,
@@ -30,7 +30,7 @@ final class Factory
         10,
     ];
 
-    private const DEFAULT_QUANTILES = [
+    private const array DEFAULT_QUANTILES = [
         0.1,
         0.5,
         0.9,

@@ -9,7 +9,7 @@
         }
     ],
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "lcobucci/clock": "^3.2"
     },
     "require-dev": {
@@ -35,7 +35,7 @@
             "infection/extension-installer": true
         },
         "platform": {
-            "php": "8.2.13"
+            "php": "8.3.13"
         },
         "sort-packages": true
     },

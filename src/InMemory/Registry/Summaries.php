@@ -20,7 +20,7 @@ use function usort;
 
 final class Summaries implements SummariesInterface
 {
-    private const SEPARATOR = 'aefnpawpijo%*&^)(3w4q1japwe';
+    private const string SEPARATOR = 'aefnpawpijo%*&^)(3w4q1japwe';
 
     /** @var array<string> */
     private array $requiredLabelNames;

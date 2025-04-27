@@ -19,7 +19,7 @@ use function usort;
 
 final class Counters implements CountersInterface
 {
-    private const SEPARATOR = '#@$%^&*()';
+    private const string SEPARATOR = '#@$%^&*()';
 
     /** @var array<string> */
     private array $requiredLabelNames;

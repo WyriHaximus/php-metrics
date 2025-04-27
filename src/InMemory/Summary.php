@@ -22,9 +22,9 @@ use function sort;
 
 final class Summary implements SummaryInterface
 {
-    private const ONE  = 1;
-    private const TWO  = 2;
-    private const ZERO = 0;
+    private const int ONE  = 1;
+    private const int TWO  = 2;
+    private const int ZERO = 0;
 
     private Clock $clock;
     private int $bucketCount;

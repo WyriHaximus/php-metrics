@@ -20,8 +20,8 @@ use function strlen;
 
 final class Prometheus implements Printer
 {
-    private const NL              = "\n";
-    private const NO_LABELS_COUNT = 0;
+    private const string NL           = "\n";
+    private const int NO_LABELS_COUNT = 0;
 
     public function print(PrintJob $print): string
     {
