@@ -56,7 +56,7 @@ final class Histograms implements HistogramsInterface
         );
 
         if (! array_key_exists($key, $this->histograms)) {
-            $this->histograms[$key] = new Histogram($this->name, $this->description, $this->buckets, ...$labels);
+            $this->histograms[$key] = new Histogram($this->buckets, ...$labels);
         }
 
         return $this->histograms[$key];

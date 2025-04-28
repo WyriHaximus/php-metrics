@@ -56,7 +56,7 @@ final class Summaries implements SummariesInterface
         );
 
         if (! array_key_exists($key, $this->summaries)) {
-            $this->summaries[$key] = new Summary($this->configuration, $this->name, $this->description, $this->quantiles, ...$labels);
+            $this->summaries[$key] = new Summary($this->configuration, $this->quantiles, ...$labels);
         }
 
         return $this->summaries[$key];

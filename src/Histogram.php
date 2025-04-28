@@ -8,10 +8,6 @@ use WyriHaximus\Metrics\Histogram\Bucket;
 
 interface Histogram
 {
-    public function name(): string;
-
-    public function description(): string;
-
     /** @return iterable<Bucket> */
     public function buckets(): iterable;
 

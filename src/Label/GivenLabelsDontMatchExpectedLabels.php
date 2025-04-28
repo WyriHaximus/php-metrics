@@ -8,14 +8,14 @@ use InvalidArgumentException;
 
 final class GivenLabelsDontMatchExpectedLabels extends InvalidArgumentException
 {
-    private const string MESSAGE = 'Given labels don\'t match expected labels';
+    public const string MESSAGE = 'Given labels don\'t match expected labels';
 
     //phpcs:disable
     /** @var array<string> */
-    public array $expectedLabels = [];
+    public readonly array $expectedLabels;
 
     /** @var array<string> */
-    public array $labelNames = [];
+    public readonly array $labelNames;
     //phpcs:enable
 
     /**
@@ -24,11 +24,18 @@ final class GivenLabelsDontMatchExpectedLabels extends InvalidArgumentException
      */
     public static function create(array $expectedLabels, array $labelNames): self
     {
-        $self = new self(self::MESSAGE);
+        return new self(self::MESSAGE, $expectedLabels, $labelNames);
+    }
 
-        $self->expectedLabels = $expectedLabels;
-        $self->labelNames     = $labelNames;
+    /**
+     * @param array<string> $expectedLabels
+     * @param array<string> $labelNames
+     */
+    private function __construct(string $message, array $expectedLabels, array $labelNames)
+    {
+        parent::__construct($message);
 
-        return $self;
+        $this->expectedLabels = $expectedLabels;
+        $this->labelNames     = $labelNames;
     }
 }

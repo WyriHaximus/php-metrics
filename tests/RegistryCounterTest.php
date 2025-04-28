@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Tests\Metrics;
 
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\Metrics\Counter;
 use WyriHaximus\Metrics\Factory;
 use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Label\Name;
+use WyriHaximus\TestUtilities\TestCase;
 
 use function array_map;
 
 final class RegistryCounterTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function counter(): void
     {
         $metricName        = 'name';
@@ -44,16 +45,13 @@ final class RegistryCounterTest extends TestCase
 
         self::assertSame($metricName, $counter->name());
         self::assertSame($metricDescription, $counter->description());
-        foreach ($counters as $uniqueCounter) {
-            self::assertSame($metricName, $uniqueCounter->name());
-            self::assertSame($metricDescription, $uniqueCounter->description());
-        }
     }
 
-    /** @test */
+    #[Test]
     public function faultyLabels(): void
     {
         self::expectException(Label\GivenLabelsDontMatchExpectedLabels::class);
+        self::expectExceptionMessage(Label\GivenLabelsDontMatchExpectedLabels::MESSAGE);
 
         $metricName        = 'name';
         $metricDescription = 'Description';

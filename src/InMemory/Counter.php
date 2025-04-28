@@ -12,21 +12,11 @@ final class Counter implements CounterInterface
 {
     private int $count = 0;
     /** @var array<Label> */
-    private array $labels;
+    private readonly array $labels;
 
-    public function __construct(private string $name, private string $description, Label ...$labels)
+    public function __construct(Label ...$labels)
     {
         $this->labels = $labels;
-    }
-
-    public function name(): string
-    {
-        return $this->name;
-    }
-
-    public function description(): string
-    {
-        return $this->description;
     }
 
     public function count(): int

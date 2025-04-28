@@ -6,10 +6,6 @@ namespace WyriHaximus\Metrics;
 
 interface Counter
 {
-    public function name(): string;
-
-    public function description(): string;
-
     public function count(): int;
 
     /** @return array<Label> */

@@ -5,13 +5,15 @@ declare(strict_types=1);
 namespace WyriHaximus\Tests\Metrics\Printer;
 
 use Lcobucci\Clock\FrozenClock;
-use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use WyriHaximus\Metrics\Configuration;
 use WyriHaximus\Metrics\Factory;
 use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Label\Name;
 use WyriHaximus\Metrics\Printer\Prometheus;
 use WyriHaximus\Metrics\Registry;
+use WyriHaximus\TestUtilities\TestCase;
 
 use function array_reverse;
 use function file_get_contents;
@@ -22,10 +24,8 @@ use const DIRECTORY_SEPARATOR;
 
 final class PrometheusTest extends TestCase
 {
-    /**
-     * @test
-     * @dataProvider provideRegistries
-     */
+    #[Test]
+    #[DataProvider('provideRegistries')]
     public function print(Registry $registry): void
     {
         $expectedPrometheusPrint = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'prometheus.txt');
@@ -55,7 +55,7 @@ final class PrometheusTest extends TestCase
     }
 
     /** @return iterable<string, array<Registry>> */
-    public function provideRegistries(): iterable
+    public static function provideRegistries(): iterable
     {
         yield 'default' => [Factory::create()];
         yield 'with frozen UTC clock' => [Factory::createWithConfiguration(Configuration::create()->withClock(FrozenClock::fromUTC()))];

@@ -55,7 +55,7 @@ final class Counters implements CountersInterface
         );
 
         if (! array_key_exists($key, $this->counters)) {
-            $this->counters[$key] = new Counter($this->name, $this->description, ...$labels);
+            $this->counters[$key] = new Counter(...$labels);
         }
 
         return $this->counters[$key];

@@ -8,21 +8,23 @@ use InvalidArgumentException;
 
 final class IncreaseToCountLowerThanCounterCount extends InvalidArgumentException
 {
-    private const string MESSAGE = 'Increase to count higher than counter count';
+    public const string MESSAGE = 'Increase to count higher than counter count';
 
     //phpcs:disable
-    /** @psalm-suppress MissingConstructor */
-    public int $increaseToCount = 0;
-    public int $count = 0;
+    public readonly int $increaseToCount;
+    public readonly int $count;
     //phpcs:enable
 
     public static function create(int $increaseToCount, int $count): self
     {
-        $self = new self(self::MESSAGE);
+        return new self(self::MESSAGE, $increaseToCount, $count);
+    }
 
-        $self->increaseToCount = $increaseToCount;
-        $self->count           = $count;
+    private function __construct(string $message, int $increaseToCount, int $count)
+    {
+        parent::__construct($message);
 
-        return $self;
+        $this->increaseToCount = $increaseToCount;
+        $this->count           = $count;
     }
 }

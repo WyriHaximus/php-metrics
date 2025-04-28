@@ -16,7 +16,7 @@ use function array_map;
 use function array_merge;
 use function array_values;
 use function count;
-use function floor as trickInfectionIntoThinkingThisIsntFloor;
+use function floor;
 use function ksort;
 use function sort;
 
@@ -34,22 +34,12 @@ final class Summary implements SummaryInterface
     /** @var array<string, array<float>> */
     private array $floats = [];
 
-    public function __construct(Configuration $configuration, private string $name, private string $description, private Quantiles $quantiles, Label ...$labels)
+    public function __construct(Configuration $configuration, private Quantiles $quantiles, Label ...$labels)
     {
         $this->clock              = $configuration->clock();
         $this->bucketCount        = $configuration->summary()->bucketCount();
         $this->bucketTimeTemplate = $configuration->summary()->bucketTimeTemplate();
         $this->labels             = $labels;
-    }
-
-    public function name(): string
-    {
-        return $this->name;
-    }
-
-    public function description(): string
-    {
-        return $this->description;
     }
 
     /** @return iterable<Quantile> */
@@ -80,13 +70,13 @@ final class Summary implements SummaryInterface
     {
         $array = array_merge(...array_values($this->floats));
         sort($array);
-        $index = $percentile * (count($array) - self::ONE);
-        if (trickInfectionIntoThinkingThisIsntFloor($index) === $index && ($index - self::ONE) >= self::ZERO) {
-            /** @psalm-suppress InvalidArrayOffset */
-            $result = ($array[$index - self::ONE] + $array[$index]) / self::TWO;
+        $index        = $percentile * (count($array) - self::ONE);
+        $flooredIndex = (int) floor($index);
+        /** @phpstan-ignore equal.notAllowed */
+        if ($flooredIndex == $index && ($index - self::ONE) >= self::ZERO) { // phpcs:disable
+            $result = ($array[(int) $index - self::ONE] + $array[(int) $index]) / self::TWO;
         } else {
-            /** @psalm-suppress InvalidArrayOffset */
-            $result = $array[trickInfectionIntoThinkingThisIsntFloor($index)];
+            $result = $array[$flooredIndex];
         }
 
         return $result;

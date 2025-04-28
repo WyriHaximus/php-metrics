@@ -13,6 +13,8 @@ use function array_map;
 
 final class Histogram implements HistogramInterface
 {
+    public const string INF = '+Inf';
+
     /** @var array<Bucket> */
     private array $buckets;
     /** @var array<Label> */
@@ -20,27 +22,17 @@ final class Histogram implements HistogramInterface
     private float $summary = 0;
     private int $count     = 0;
 
-    public function __construct(private string $name, private string $description, Buckets $buckets, Label ...$labels)
+    public function __construct(Buckets $buckets, Label ...$labels)
     {
         $this->buckets = array_map(static fn (float $quantile) => new Bucket((string) $quantile), $buckets->buckets());
         $this->labels  = $labels;
-    }
-
-    public function name(): string
-    {
-        return $this->name;
-    }
-
-    public function description(): string
-    {
-        return $this->description;
     }
 
     /** @return iterable<Bucket> */
     public function buckets(): iterable
     {
         yield from $this->buckets;
-        yield '+Inf' => Bucket::createWithCount('+Inf', $this->count);
+        yield self::INF => Bucket::createWithCount(self::INF, $this->count);
     }
 
     public function summary(): float
@@ -62,7 +54,11 @@ final class Histogram implements HistogramInterface
     public function observe(float $value): void
     {
         foreach ($this->buckets as $bucket) {
-            if ($bucket->le() <= $value) {
+            if ($bucket->le() === self::INF) {
+                continue;
+            }
+
+            if ((float) $bucket->le() <= $value) {
                 continue;
             }
 
