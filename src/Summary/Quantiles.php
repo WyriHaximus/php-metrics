@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Metrics\Summary;
 
-final class Quantiles
+final readonly class Quantiles
 {
     /** @var array<float> */
     private array $quantiles;

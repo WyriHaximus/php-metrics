@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Metrics\Histogram;
 
-final class Buckets
+final readonly class Buckets
 {
     /** @var array<float> */
     private array $buckets;

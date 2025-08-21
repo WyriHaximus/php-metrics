@@ -8,7 +8,7 @@ final class Bucket
 {
     private int $count = 0;
 
-    public function __construct(private string $le)
+    public function __construct(private readonly string $le)
     {
     }
 

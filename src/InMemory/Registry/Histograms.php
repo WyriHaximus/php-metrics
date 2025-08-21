@@ -23,13 +23,13 @@ final class Histograms implements HistogramsInterface
     private const string SEPARATOR = 'w34yw3[qi2c';
 
     /** @var array<string> */
-    private array $requiredLabelNames;
+    private readonly array $requiredLabelNames;
     /** @var array<Histogram> */
     private array $histograms = [];
 
-    public function __construct(private string $name, private string $description, private Buckets $buckets, Name ...$requiredLabelNames)
+    public function __construct(private readonly string $name, private readonly string $description, private readonly Buckets $buckets, Name ...$requiredLabelNames)
     {
-        $this->requiredLabelNames = array_map(static fn (Name $name) => $name->name(), $requiredLabelNames);
+        $this->requiredLabelNames = array_map(static fn (Name $name): string => $name->name(), $requiredLabelNames);
     }
 
     public function name(): string
@@ -46,11 +46,11 @@ final class Histograms implements HistogramsInterface
     {
         Label\Utils::validate($this->requiredLabelNames, ...$labels);
 
-        usort($labels, static fn (Label $a, Label $b) => strcmp($a->name(), $b->name()));
+        usort($labels, static fn (Label $a, Label $b): int => strcmp($a->name(), $b->name()));
         $key = implode(
             self::SEPARATOR,
             array_map(
-                static fn (Label $label) => $label->value(),
+                static fn (Label $label): string => $label->value(),
                 $labels,
             ),
         );

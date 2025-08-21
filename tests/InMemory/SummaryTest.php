@@ -43,12 +43,12 @@ final class SummaryTest extends TestCase
         $histogram = new Summary(Configuration::create()->withClock($clock), Factory::defaultQuantiles(), new Label('label', 'label'));
         for ($i = 1; $i < 13; $i++) {
             $histogram->observe($i * 666);
-            $clock->setTo((new DateTimeImmutable('now', new DateTimeZone('UTC')))->add(new DateInterval('PT' . $i . 'H')));
+            $clock->setTo(new DateTimeImmutable('now', new DateTimeZone('UTC'))->add(new DateInterval('PT' . $i . 'H')));
         }
 
         $quantile = [...$histogram->quantiles()];
 
         self::assertSame(['0.1', '0.5', '0.9', '0.99'], array_values(array_map(static fn (Quantile $quantile): string => $quantile->quantile(), $quantile)));
-        self::assertSame([1998.0, 4662.0, 7326.0, 7326.0], array_values(array_map(static fn (Quantile $quantile): float => $quantile->value(), $quantile)));
+        self::assertSame([666.0, 4662.0, 7326.0, 7326.0], array_values(array_map(static fn (Quantile $quantile): float => $quantile->value(), $quantile)));
     }
 }

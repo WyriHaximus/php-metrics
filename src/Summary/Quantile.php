@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Metrics\Summary;
 
-final class Quantile
+final readonly class Quantile
 {
     public function __construct(private string $quantile, private float $value)
     {

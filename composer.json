@@ -1,52 +1,53 @@
 {
-    "name": "wyrihaximus/metrics",
-    "description": "\ud83d\udd75\ufe0f\u200d\u2640\ufe0f Prometheus modelled metric VO's and registry",
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Cees-Jan Kiewiet",
-            "email": "ceesjank@gmail.com"
-        }
-    ],
-    "require": {
-        "php": "^8.3",
-        "lcobucci/clock": "^3.2"
-    },
-    "require-dev": {
-        "phpbench/phpbench": "^1.2.3",
-        "wyrihaximus/makefiles": "^0.3.1",
-        "wyrihaximus/test-utilities": "^7.0.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "WyriHaximus\\Metrics\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "WyriHaximus\\Tests\\Metrics\\": "tests/"
-        }
-    },
-    "config": {
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "ergebnis/composer-normalize": true,
-            "icanhazstring/composer-unused": true,
-            "infection/extension-installer": true,
-            "phpstan/extension-installer": true,
-            "wyrihaximus/makefiles": true
-        },
-        "platform": {
-            "php": "8.3.13"
-        },
-        "sort-packages": true
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "composer normalize"
-        ],
-        "post-update-cmd": [
-            "composer normalize"
-        ]
+  "name": "wyrihaximus/metrics",
+  "description": "\ud83d\udd75\ufe0f\u200d\u2640\ufe0f Prometheus modelled metric VO's and registry",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Cees-Jan Kiewiet",
+      "email": "ceesjank@gmail.com"
     }
+  ],
+  "require": {
+    "php": "^8.4",
+    "lcobucci/clock": "^3.3.1"
+  },
+  "require-dev": {
+    "phpbench/phpbench": "^1.4.1",
+    "wyrihaximus/makefiles": "^0.6.0",
+    "wyrihaximus/test-utilities": "^8.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "WyriHaximus\\Metrics\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "WyriHaximus\\Tests\\Metrics\\": "tests/"
+    }
+  },
+  "config": {
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "ergebnis/composer-normalize": true,
+      "icanhazstring/composer-unused": true,
+      "infection/extension-installer": true,
+      "phpstan/extension-installer": true,
+      "wyrihaximus/makefiles": true,
+      "wyrihaximus/test-utilities": true
+    },
+    "platform": {
+      "php": "8.4.13"
+    },
+    "sort-packages": true
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "make on-install-or-update || true"
+    ],
+    "post-update-cmd": [
+      "make on-install-or-update || true"
+    ]
+  }
 }
