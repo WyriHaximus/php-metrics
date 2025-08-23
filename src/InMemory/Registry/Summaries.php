@@ -23,13 +23,13 @@ final class Summaries implements SummariesInterface
     private const string SEPARATOR = 'aefnpawpijo%*&^)(3w4q1japwe';
 
     /** @var array<string> */
-    private array $requiredLabelNames;
+    private readonly array $requiredLabelNames;
     /** @var array<Summary> */
     private array $summaries = [];
 
-    public function __construct(private Configuration $configuration, private string $name, private string $description, private Quantiles $quantiles, Name ...$requiredLabelNames)
+    public function __construct(private readonly Configuration $configuration, private readonly string $name, private readonly string $description, private readonly Quantiles $quantiles, Name ...$requiredLabelNames)
     {
-        $this->requiredLabelNames = array_map(static fn (Name $name) => $name->name(), $requiredLabelNames);
+        $this->requiredLabelNames = array_map(static fn (Name $name): string => $name->name(), $requiredLabelNames);
     }
 
     public function name(): string
@@ -46,11 +46,11 @@ final class Summaries implements SummariesInterface
     {
         Label\Utils::validate($this->requiredLabelNames, ...$labels);
 
-        usort($labels, static fn (Label $a, Label $b) => strcmp($a->name(), $b->name()));
+        usort($labels, static fn (Label $a, Label $b): int => strcmp($a->name(), $b->name()));
         $key = implode(
             self::SEPARATOR,
             array_map(
-                static fn (Label $label) => $label->value(),
+                static fn (Label $label): string => $label->value(),
                 $labels,
             ),
         );

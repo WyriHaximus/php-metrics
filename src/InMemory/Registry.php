@@ -31,7 +31,7 @@ final class Registry implements RegistryInterface
     /** @var array<string, Counters> */
     private array $counters = [];
 
-    public function __construct(private Configuration $configuration)
+    public function __construct(private readonly Configuration $configuration)
     {
     }
 
@@ -96,6 +96,6 @@ final class Registry implements RegistryInterface
     /** @param array<float> $stuffing */
     private function key(string $name, string $description, array $stuffing, Name ...$requiredLabelNames): string
     {
-        return $name . self::SEPARATOR . $description . self::SEPARATOR . implode(self::SEPARATOR, $stuffing) . self::SEPARATOR . implode(self::SEPARATOR, array_map(static fn (Name $name) => $name->name(), $requiredLabelNames));
+        return $name . self::SEPARATOR . $description . self::SEPARATOR . implode(self::SEPARATOR, $stuffing) . self::SEPARATOR . implode(self::SEPARATOR, array_map(static fn (Name $name): string => $name->name(), $requiredLabelNames));
     }
 }

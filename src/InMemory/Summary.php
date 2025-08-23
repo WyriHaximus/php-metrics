@@ -26,15 +26,15 @@ final class Summary implements SummaryInterface
     private const int TWO  = 2;
     private const int ZERO = 0;
 
-    private Clock $clock;
-    private int $bucketCount;
-    private string $bucketTimeTemplate;
+    private readonly Clock $clock;
+    private readonly int $bucketCount;
+    private readonly string $bucketTimeTemplate;
     /** @var array<Label> */
-    private array $labels;
+    private readonly array $labels;
     /** @var array<string, array<float>> */
     private array $floats = [];
 
-    public function __construct(Configuration $configuration, private Quantiles $quantiles, Label ...$labels)
+    public function __construct(Configuration $configuration, private readonly Quantiles $quantiles, Label ...$labels)
     {
         $this->clock              = $configuration->clock();
         $this->bucketCount        = $configuration->summary()->bucketCount();
@@ -45,7 +45,7 @@ final class Summary implements SummaryInterface
     /** @return iterable<Quantile> */
     public function quantiles(): iterable
     {
-        yield from array_map(fn (float $quantile) => new Quantile((string) $quantile, $this->calculatePercentile($quantile)), $this->quantiles->quantiles());
+        yield from array_map(fn (float $quantile): Quantile => new Quantile((string) $quantile, $this->calculatePercentile($quantile)), $this->quantiles->quantiles());
     }
 
     /** @return array<Label> */

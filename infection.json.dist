@@ -152,6 +152,11 @@
                 "WyriHaximus\\Metrics\\Factory::createWithConfiguration"
             ]
         },
+        "ReturnRemoval": {
+            "ignore": [
+                "WyriHaximus\\Metrics\\InMemory\\Summary::observe"
+            ]
+        },
         "RoundingFamily": {
             "ignore": [
                 "WyriHaximus\\Metrics\\InMemory\\Summary::calculatePercentile"

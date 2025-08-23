@@ -16,15 +16,15 @@ final class Histogram implements HistogramInterface
     public const string INF = '+Inf';
 
     /** @var array<Bucket> */
-    private array $buckets;
+    private readonly array $buckets;
     /** @var array<Label> */
-    private array $labels;
+    private readonly array $labels;
     private float $summary = 0;
     private int $count     = 0;
 
     public function __construct(Buckets $buckets, Label ...$labels)
     {
-        $this->buckets = array_map(static fn (float $quantile) => new Bucket((string) $quantile), $buckets->buckets());
+        $this->buckets = array_map(static fn (float $quantile): Bucket => new Bucket((string) $quantile), $buckets->buckets());
         $this->labels  = $labels;
     }
 
