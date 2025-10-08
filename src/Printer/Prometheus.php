@@ -16,7 +16,6 @@ use function addslashes;
 use function array_map;
 use function count;
 use function implode;
-use function strlen;
 
 final class Prometheus implements Printer
 {
@@ -66,7 +65,7 @@ final class Prometheus implements Printer
 
         if ($string !== '') {
             $head = '';
-            if (strlen($counters->description()) > 0) {
+            if ($counters->description() !== '') {
                 $head = '# HELP ' . $counters->name() . '_total ' . $counters->description() . self::NL;
             }
 
@@ -98,7 +97,7 @@ final class Prometheus implements Printer
         if ($string !== '') {
             $head = '';
 
-            if (strlen($gauges->description()) > 0) {
+            if ($gauges->description() !== '') {
                 $head = '# HELP ' . $gauges->name() . ' ' . $gauges->description() . self::NL;
             }
 
@@ -149,7 +148,7 @@ final class Prometheus implements Printer
         if ($string !== '') {
             $head = '';
 
-            if (strlen($histograms->description()) > 0) {
+            if ($histograms->description() !== '') {
                 $head = '# HELP ' . $histograms->name() . ' ' . $histograms->description() . self::NL;
             }
 
@@ -186,7 +185,7 @@ final class Prometheus implements Printer
         if ($string !== '') {
             $head = '';
 
-            if (strlen($summaries->description()) > 0) {
+            if ($summaries->description() !== '') {
                 $head = '# HELP ' . $summaries->name() . ' ' . $summaries->description() . self::NL;
             }
 
