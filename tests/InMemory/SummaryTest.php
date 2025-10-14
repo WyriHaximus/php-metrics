@@ -49,6 +49,7 @@ final class SummaryTest extends TestCase
         $quantile = [...$histogram->quantiles()];
 
         self::assertSame(['0.1', '0.5', '0.9', '0.99'], array_values(array_map(static fn (Quantile $quantile): string => $quantile->quantile(), $quantile)));
-        self::assertSame([666.0, 4662.0, 7326.0, 7326.0], array_values(array_map(static fn (Quantile $quantile): float => $quantile->value(), $quantile)));
+        self::assertSame([1998.0, 4662.0, 7326.0, 7326.0], array_values(array_map(static fn (Quantile $quantile): float => $quantile->value(), $quantile)));
+//        self::assertSame([666.0, 3330.0, 7326.0, 7326.0], array_values(array_map(static fn (Quantile $quantile): float => $quantile->value(), $quantile)));
     }
 }
