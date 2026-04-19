@@ -7,6 +7,7 @@ namespace WyriHaximus\Metrics\Registry;
 use WyriHaximus\Metrics\Gauge;
 use WyriHaximus\Metrics\Label;
 
+/** @api */
 interface Gauges
 {
     public function name(): string;

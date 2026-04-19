@@ -7,6 +7,7 @@ namespace WyriHaximus\Metrics\Registry;
 use WyriHaximus\Metrics\Counter;
 use WyriHaximus\Metrics\Label;
 
+/** @api */
 interface Counters
 {
     public function name(): string;

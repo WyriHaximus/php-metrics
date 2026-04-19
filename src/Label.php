@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Metrics;
 
+/** @api */
 final readonly class Label
 {
     public function __construct(private string $name, private string $value)

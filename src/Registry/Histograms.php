@@ -7,6 +7,7 @@ namespace WyriHaximus\Metrics\Registry;
 use WyriHaximus\Metrics\Histogram;
 use WyriHaximus\Metrics\Label;
 
+/** @api */
 interface Histograms
 {
     public function name(): string;

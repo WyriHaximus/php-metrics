@@ -7,6 +7,7 @@ namespace WyriHaximus\Metrics\Registry;
 use WyriHaximus\Metrics\Label;
 use WyriHaximus\Metrics\Summary;
 
+/** @api */
 interface Summaries
 {
     public function name(): string;

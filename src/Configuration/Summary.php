@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Metrics\Configuration;
 
+/** @api */
 final class Summary
 {
     private const int BUCKET_COUNT            = 10;
