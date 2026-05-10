@@ -12,8 +12,8 @@ require 'vendor/autoload.php';
 
 $registry = Factory::create();
 
-$counter = $registry->counter('counter', 'simple counter counting things', new Name('label'));
-$gauge = $registry->gauge('counter', 'simple counter counting things', new Name('label'));
+$counter   = $registry->counter('counter', 'simple counter counting things', new Name('label'));
+$gauge     = $registry->gauge('counter', 'simple counter counting things', new Name('label'));
 $histogram = $registry->histogram('histogram', 'simple histogram histogramming things', new Buckets(0.5, 1, 2.5, 5, 10), new Name('label'));
 
 for ($label = 'a'; $label !== 'aa'; $label++) {
