@@ -6,6 +6,7 @@ namespace WyriHaximus\Metrics;
 
 use WyriHaximus\Metrics\Histogram\Bucket;
 
+/** @api */
 interface Histogram
 {
     /** @return iterable<Bucket> */

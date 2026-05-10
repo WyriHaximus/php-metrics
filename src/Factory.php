@@ -8,6 +8,7 @@ use Lcobucci\Clock\SystemClock;
 use WyriHaximus\Metrics\Histogram\Buckets;
 use WyriHaximus\Metrics\Summary\Quantiles;
 
+/** @api */
 final class Factory
 {
     private const array DEFAULT_BUCKETS = [

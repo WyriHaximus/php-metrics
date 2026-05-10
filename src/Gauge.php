@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace WyriHaximus\Metrics;
 
+/** @api */
 interface Gauge
 {
     public function gauge(): int;

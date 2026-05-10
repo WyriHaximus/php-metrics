@@ -6,6 +6,7 @@ namespace WyriHaximus\Metrics;
 
 use WyriHaximus\Metrics\Summary\Quantile;
 
+/** @api */
 interface Summary
 {
     /** @return iterable<Quantile> */

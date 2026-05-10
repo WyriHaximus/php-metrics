@@ -12,6 +12,7 @@ use WyriHaximus\Metrics\Registry\Histograms;
 use WyriHaximus\Metrics\Registry\Summaries;
 use WyriHaximus\Metrics\Summary\Quantiles;
 
+/** @api */
 interface Registry
 {
     public function counter(string $name, string $description, Name ...$requiredLabelNames): Counters;

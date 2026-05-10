@@ -8,6 +8,7 @@ use Lcobucci\Clock\Clock;
 use Lcobucci\Clock\SystemClock;
 use WyriHaximus\Metrics\Configuration\Summary as ConfigurationSummary;
 
+/** @api */
 final class Configuration
 {
     private Clock $clock;
