@@ -57,6 +57,14 @@ final class RegistryCounterTest extends TestCase
         $metricDescription = 'Description';
 
         $registry = Factory::create();
-        $registry->counter($metricName, $metricDescription, new Name('label'))->counter(new Label('labiel', 'boem'));
+        try {
+            $registry->counter($metricName, $metricDescription, new Name('label'))->counter(new Label('labiel', 'boem'));
+            self::fail('Should never reach behind the previous statement');
+        } catch (Label\GivenLabelsDontMatchExpectedLabels $exception) {
+            self::assertSame(['label'], $exception->expectedLabels);
+            self::assertSame(['labiel'], $exception->labelNames);
+
+            throw $exception;
+        }
     }
 }

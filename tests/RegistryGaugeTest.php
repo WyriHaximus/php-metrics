@@ -59,6 +59,14 @@ final class RegistryGaugeTest extends TestCase
         $metricDescription = 'Description';
 
         $registry = Factory::create();
-        $registry->gauge($metricName, $metricDescription, new Name('label'))->gauge(new Label('labiel', 'boem'));
+        try {
+            $registry->gauge($metricName, $metricDescription, new Name('label'))->gauge(new Label('labiel', 'boem'));
+            self::fail('Should never reach behind the previous statement');
+        } catch (Label\GivenLabelsDontMatchExpectedLabels $exception) {
+            self::assertSame(['label'], $exception->expectedLabels);
+            self::assertSame(['labiel'], $exception->labelNames);
+
+            throw $exception;
+        }
     }
 }
