@@ -63,6 +63,14 @@ final class RegistryHistogramTest extends TestCase
         $metricDescription = 'Description';
 
         $registry = Factory::create();
-        $registry->histogram($metricName, $metricDescription, new Histogram\Buckets(0.1), new Name('label'))->histogram(new Label('labiel', 'boem'));
+        try {
+            $registry->histogram($metricName, $metricDescription, new Histogram\Buckets(0.1), new Name('label'))->histogram(new Label('labiel', 'boem'));
+            self::fail('Should never reach behind the previous statement');
+        } catch (Label\GivenLabelsDontMatchExpectedLabels $exception) {
+            self::assertSame(['label'], $exception->expectedLabels);
+            self::assertSame(['labiel'], $exception->labelNames);
+
+            throw $exception;
+        }
     }
 }

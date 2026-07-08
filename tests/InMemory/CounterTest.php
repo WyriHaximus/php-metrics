@@ -17,9 +17,19 @@ final class CounterTest extends TestCase
     {
         self::expectException(IncreaseToCountLowerThanCounterCount::class);
         self::expectExceptionMessage(IncreaseToCountLowerThanCounterCount::MESSAGE);
+        self::expectExceptionObject(IncreaseToCountLowerThanCounterCount::create(1, 2));
 
         $counter = new Counter(new Label('label', 'label'));
         $counter->incrTo(128);
-        $counter->incrTo(64);
+
+        try {
+            $counter->incrTo(64);
+            self::fail('Should never reach behind the previous statement');
+        } catch (IncreaseToCountLowerThanCounterCount $exception) {
+            self::assertSame(128, $exception->count);
+            self::assertSame(64, $exception->increaseToCount);
+
+            throw $exception;
+        }
     }
 }

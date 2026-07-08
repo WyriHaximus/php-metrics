@@ -6,6 +6,7 @@ namespace WyriHaximus\Metrics\Label;
 
 use InvalidArgumentException;
 
+/** @api */
 final class GivenLabelsDontMatchExpectedLabels extends InvalidArgumentException
 {
     public const string MESSAGE = 'Given labels don\'t match expected labels';

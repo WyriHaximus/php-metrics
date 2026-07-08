@@ -6,6 +6,7 @@ namespace WyriHaximus\Metrics\Counter;
 
 use InvalidArgumentException;
 
+/** @api */
 final class IncreaseToCountLowerThanCounterCount extends InvalidArgumentException
 {
     public const string MESSAGE = 'Increase to count higher than counter count';
