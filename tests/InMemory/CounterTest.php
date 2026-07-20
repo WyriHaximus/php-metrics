@@ -16,7 +16,7 @@ final class CounterTest extends TestCase
     public function counter(): void
     {
         self::expectException(IncreaseToCountLowerThanCounterCount::class);
-        self::expectExceptionMessage(IncreaseToCountLowerThanCounterCount::MESSAGE);
+        self::expectExceptionMessageIsOrContains(IncreaseToCountLowerThanCounterCount::MESSAGE);
         self::expectExceptionObject(IncreaseToCountLowerThanCounterCount::create(1, 2));
 
         $counter = new Counter(new Label('label', 'label'));
