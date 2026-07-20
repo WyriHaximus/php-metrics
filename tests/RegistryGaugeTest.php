@@ -53,7 +53,7 @@ final class RegistryGaugeTest extends TestCase
     public function faultyLabels(): void
     {
         self::expectException(Label\GivenLabelsDontMatchExpectedLabels::class);
-        self::expectExceptionMessage(Label\GivenLabelsDontMatchExpectedLabels::MESSAGE);
+        self::expectExceptionMessageIsOrContains(Label\GivenLabelsDontMatchExpectedLabels::MESSAGE);
 
         $metricName        = 'name';
         $metricDescription = 'Description';
