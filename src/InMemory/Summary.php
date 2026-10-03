@@ -74,12 +74,10 @@ final class Summary implements SummaryInterface
         $flooredIndex = (int) floor($index);
         /** @phpstan-ignore equal.notAllowed */
         if ($flooredIndex == $index && ($index - self::ONE) >= self::ZERO) { // phpcs:disable
-            $result = ($array[(int) $index - self::ONE] + $array[(int) $index]) / self::TWO;
-        } else {
-            $result = $array[$flooredIndex];
+            return ($array[(int) $index - self::ONE] + $array[(int) $index]) / self::TWO;
         }
 
-        return $result;
+        return $array[$flooredIndex];
     }
 
     private function cleanUpBuckets(): void
