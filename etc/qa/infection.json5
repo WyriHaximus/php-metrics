@@ -176,5 +176,6 @@
         }
     },
     "minMsi": 100,
-    "minCoveredMsi": 100
+    "minCoveredMsi": 100,
+    "threads": 64
 }
